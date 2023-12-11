@@ -1,0 +1,47 @@
+  <ion-card [ngClass]="{'active': active}"
+            style="box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.2);
+            border-radius: 12px;  display: flex; padding-top: 8px;"
+            class="iconCardButton ion-padding ion-text-center"
+            (click)="buttonClick()"
+            [style.height.px]="height"
+            [style.width.px]="width"
+            button>
+
+            <div style="height: 100%;">
+
+<span *ngIf="cornerText !== null"
+      style="position: absolute;"
+      [ngClass]="{'score--previous-active': active, 'score--previous-not-active' : !active }"
+      class="score--previous ion-text-uppercase">{{cornerText}}</span>
+
+<ion-row class="ion-no-padding ion-justify-content-center ion-align-items-center">
+  <!-- Icon Url Only -------->
+  <img *ngIf="iconUrl"
+       style="height: 100px; "
+       [src]="iconUrl" />
+
+  <!-- activeIconUrl + inactiveIconUrl ------------------>
+  <img *ngIf="!iconUrl"
+       [src]="(active) ? activeIconUrl : inactiveIconUrl"
+       style="height: 100px;" />
+
+<!-- 
+  <div style="height: 59px; width: 59px; background:var(--ion-color-primary); "
+       *ngIf="!iconUrl && "
+       class="avatar-circle">
+    <span class="initials4">{{initials}}</span>
+  </div> -->
+
+</ion-row>
+<ion-row style="    padding-top: 11px;"
+         class="ion-no-padding ion-justify-content-center ion-align-items-end">
+  <ion-label class="ion-text-wrap"
+             [hidden]="label === ''">
+    <h2 [style.color]="textColor">{{label}}</h2>
+  </ion-label>
+</ion-row>
+            </div>
+
+    
+
+  </ion-card>

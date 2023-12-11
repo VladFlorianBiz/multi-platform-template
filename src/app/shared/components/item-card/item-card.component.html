@@ -1,0 +1,33 @@
+  <ion-card class="card-style-2"
+            button
+            tappable>
+
+    <div class="image"><img style="width: 100%; "
+           [src]="(media?.length > 0 ) ? media[0]?.downloadUrl : '/../../assets/images/no-photo.png'"
+           alt="pr-sample23" /></div>
+    <figcaption>
+
+    <!-- <div class="date"><span class="day">28</span><span class="month">Oct</span></div> -->
+      <ion-fab *ngIf="showMoreOptionsFlag"
+               class="date"
+               vertical="bottom"
+               horizontal="end">
+        <ion-fab-button>
+          <!-- <ion-icon name="ellipsis-horizontal-circle-outline"></ion-icon> -->
+          <ion-icon name="bag-add-sharp"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="start">
+          <ion-fab-button>
+            <ion-icon name="download-outline"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button >
+            <ion-icon name="trash"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
+      <h3> {{name}}</h3>
+      <p>
+        {{description}}
+      </p>
+    </figcaption>
+  </ion-card>

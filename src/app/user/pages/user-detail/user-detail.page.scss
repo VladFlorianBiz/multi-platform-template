@@ -1,0 +1,82 @@
+ion-content {
+  --color: black;
+  background-color: white;
+  --background: white;
+  // --background: dark;
+  // background-color: dark;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  margin-top: 0rem;
+  // padding: 1rem;
+  text-align: center;
+  left: 0;
+  right: 0;
+}
+
+
+
+@media only screen and (max-width: 600px) {}
+
+
+
+@media only screen and (min-width: 600px) {}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+
+  /* Styles for screens between 600px and 900px wide */
+  // body {
+  //     font-size: 16px;
+  // }
+}
+
+
+
+
+.product-image-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.product-thumbnails {
+  display: flex;
+  margin-left: 20px;
+}
+
+.product-thumbnails img {
+  margin-right: 10px;
+  cursor: pointer;
+  border: 2px solid #f1f1f1;
+}
+
+.product-thumbnails img:hover {
+  border: 2px solid #000;
+}
+
+.product-details {
+  margin-bottom: 40px;
+}
+
+.product-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.product-info {
+  margin-bottom: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.product-info li {
+  margin-bottom: 10px;
+}

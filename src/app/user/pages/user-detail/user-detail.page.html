@@ -1,0 +1,308 @@
+<!----------------------------------------------------------------------------------------------------------->
+<!-- Page Content(similar to <body> check out index.html to see structure) ---------------------------------->
+<ion-content scrollbarStyle
+             fullscreen="true"
+             scrollX="false">
+
+
+  <!--*** This Page Contains both a View Mode and an Update Mode ***-->
+  <ng-container [ngSwitch]="isViewOnlyMode">
+
+
+    <!--------------------------------------------------------------------------------------------------------->
+    <!-- IS VIEW ONLY MODE ------------------------------------------------------------------------------------>
+    <ng-template ngSwitchDefault
+                 [ngSwitchCase]="true">
+      <div addOrRemoveClassOnIntersection
+           className="expand-navbar"
+           elementId="navbarElement"
+           (addOrRemoveClassEvent)="addOrRemoveClassEvent($event)"
+           style="top: -1px; padding-top: 32px; margin-bottom: -32px;"></div>
+      <!------------------------------------------------------------------------------------------------------->
+      <!-- Container for page content adds margin based on side menu ------------------------------------------>
+      <main #scrollArea>
+
+        <!-- Waves Background Header  --------------------------------------->
+        <cstm-waves-background [animated]="false" 
+                               color1="#ffffffB3"
+                               color2="#ffffff80"
+                               color3="#ffffff4C"
+                               color4="#ffffff"
+                               backgroundColor1="rgba(81, 45, 168, 1)"
+                               backgroundColor2="rgba(48, 51, 107, 1)">
+          <h1 style="font-size: 44px;  margin-top: 18vh;">User Detail</h1>
+        </cstm-waves-background>
+
+
+
+
+        <ion-grid style="margin-bottom: 36vh; margin-top: 12vh;">
+          <ion-row class="ion-justify-content-center max-width-1080">
+            <ion-col size="6">
+              <div style="position: relative; overflow: hidden; width: 100%; height: 400px; /* adjust as needed */">
+                <ion-img style=" position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;"
+                         [src]="mainImageUrl"></ion-img>
+              </div>
+              <ion-row>
+                <ion-col *ngFor="let item of thumbnailMedia"
+                         size="3">
+                  <ion-img style="  height: 80px; /* adjust as needed */
+                                    width: auto;
+                                    cursor: pointer;
+                                    border: 2px solid #f1f1f1;
+                                    object-fit: cover;"
+                           [src]="item?.downloadUrl"
+                           (click)="changeMainImageUrl(item)"></ion-img>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col size="6">
+
+
+              <div class="product-details">
+                <h1 class="product-title">{{userObj?.fullName}}</h1>
+                <h2 class="product-price">1</h2>
+                <ion-button style="width: 200px; margin: 0 auto;"
+                            class="primary-btn ion-activatable ripple-parent"
+                            shape="round"
+                            expand="block"
+                            mode="ios"
+                            fill="solid">
+                  <ion-ripple-effect style="display: flex;
+                                      justify-content: start;
+                                      left: -25px;
+                                      right: -25px;">
+                  </ion-ripple-effect>
+                  Add To cart
+                </ion-button>
+                <ul class="product-info">
+                  <li>Fabric: 100% Tencel</li>
+                  <li>Care Instructions: Machine wash cold, tumble dry low</li>
+                  <li>Sizing: XS - XL</li>
+                </ul>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </main>
+    </ng-template>
+    <!--------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+    <!--------------------------------------------------------------------------------------------------------->
+    <!-- IS EDIT MODE ----------------------------------------------------------------------------------------->
+    <ng-template [ngSwitchCase]="false">
+      <!------------------------------------------------------------------------>
+      <!-- ion-header ---------------------------------------------------------->
+      <ion-header slot="fixed"
+                  style="align-self: start;"
+                  class=" ion-no-border">
+        <div class="header-container"
+             style="background: rgb(255 255 255 / 50%); margin-left: 5rem;">
+          <!-- ion-toolbar -------------------------------->
+          <ion-toolbar style="max-width: 1080px; margin: 0 auto;  --background: transparent !important;">
+            <!-- Button wrapper on left of header --->
+            <ion-buttons slot="secondary">
+              <ion-fab-button (click)="goBack()"
+                              class="back-btn"
+                              size="small"
+                              mode="ios">
+                <ion-icon name="arrow-back">
+                </ion-icon>
+              </ion-fab-button>
+            </ion-buttons>
+
+            <!-- Page Title ------------------------------------------------->
+            <ion-title *ngIf="!isViewOnlyMode"
+                       class="page-title text-align-center"
+                       color="primary">
+              Update User
+            </ion-title>
+
+            <!-- Button wrapper on right of header ----------------->
+            <ion-buttons *ngIf="!isViewOnlyMode"
+                         slot="primary">
+              <ion-fab-button (click)="deleteUser()"
+                              class="add-btn"
+                              size="small"
+                              color="danger"
+                              mode="ios">
+                <ion-icon name="trash">
+                </ion-icon>
+              </ion-fab-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </div>
+      </ion-header>
+
+
+
+      <!------------------------------------------------------------------------------------------------------->
+      <!-- Container for page content adds margin based on side menu ------------------------------------------>
+      <main #scrollArea
+            style="margin-top: 9rem; margin-left: 5rem;">
+
+        <!--------------------------------------------------------------------------------------------------------->
+        <!-- Page Form Container ---------------------------------------------------------------------------------->
+        <form style="all: revert;"
+              [formGroup]="formObj"
+              novalidate>
+
+          <!-- Input Row --------------------------------------------------------------------------------->
+          <ion-row class="no-top-bottom-padding max-width-550 ion-justify-content-center">
+            <ion-col size="12">
+              <!------------------------------------------------------------------------------------------>
+              <ion-item [ngClass]="{'errorItem': !formObj.controls['fullName'].valid && inputTouchedOnce.fullName}"
+                        class="input-container"
+                        lines="inset"
+                        mode="md">
+                <!-- Label Container ------------------------------------------------------>
+                <ion-label position="floating">
+                  <!-- Label -------------------------------------------------------------->
+                  <span *ngIf="!(!formObj.controls['fullName'].valid && inputTouchedOnce.fullName)">
+                    Full Name*
+                  </span>
+                  <!-- On error replace form label with error message ------------------->
+                  <span *ngIf="!formObj.controls['fullName'].valid && inputTouchedOnce.fullName">
+                    Input a fullName
+                  </span>
+                </ion-label>
+                <!-- Form Input --------------------------->
+                <ion-input legacy="true"  [readonly]="isViewOnlyMode"
+                           (ionBlur)="onInputBlur('fullName')"
+                           type="text"
+                           formControlName="fullName">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+
+          <!-- Input Row ------------------------------------------------------------------------------------------>
+          <ion-row class="no-top-bottom-padding max-width-550 ion-justify-content-center ">
+            <ion-col size="12"
+                     class="ion-no-padding">
+
+              <!-- Upload Primary Photo File Manager ------------------------------>
+              <cstm-file-manager label="Main Photo*"
+                                 fileUploadLabel="Drag and drop file here or click"
+                                 [additionalIds]="mediaAdditionalIds"
+                                 [mediaType]="mediaTypeOptions.userMainMedia"
+                                 [event]="mediaEvents?.createUserMedia"
+                                 [rootStoragePathFolder]="rootStoragePathFolder"
+                                 [showDeleteBtn]="true"
+                                 [showDownloadBtn]="true"
+                                 [linkedMedia]="mainLinkedMedia"
+                                 [who]="who"
+                                 [limit]="1"
+                                 (removeLinkedMediaItem)="removeLinkedMedia($event)">
+              </cstm-file-manager>
+
+              <!-- Upload Additional Photos File Manager --------------------------->
+              <cstm-file-manager label="Additional photo(s)"
+                                 fileUploadLabel="Drag and drop file(s) here or click"
+                                 [additionalIds]="mediaAdditionalIds"
+                                 [mediaType]="mediaTypeOptions.userOtherMedia"
+                                 [event]="mediaEvents?.createUserMedia"
+                                 [rootStoragePathFolder]="rootStoragePathFolder"
+                                 [showDeleteBtn]="true"
+                                 [showDownloadBtn]="true"
+                                 [who]="who"
+                                 [linkedMedia]="otherLinkedMedia"
+                                 [limit]="3"
+                                 (removeLinkedMediaItem)="removeLinkedMedia($event)">
+              </cstm-file-manager>
+            </ion-col>
+
+          </ion-row>
+
+          <!-- Preview Row -------------------------------------------------------------->
+          <ion-row class="no-top-bottom-padding max-width-550 ion-justify-content-center">
+            <ion-col size="12">
+              <ion-item class="preview-ion-container"
+                        lines="full"
+                        mode="md">
+                <ion-label class="section-title">
+                  Preview
+                </ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="no-top-bottom-padding max-width-550 ion-justify-content-center">
+            <ion-col size="12">
+              <!-- User Card Item   ------------------->
+              <cstm-user-item [media]="mainMedia"
+                                   [name]="formObj?.value?.name"
+                                   [description]="formObj?.value?.description">
+              </cstm-user-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="no-top-bottom-padding max-width-550 ion-justify-content-center">
+            <ion-col size="12">
+              <!-- User Card Item   ------------------->
+              <cstm-item-card [media]="mainMedia"
+                              [name]="formObj?.value?.name"
+                              [description]="formObj?.value?.description">
+              </cstm-item-card>
+            </ion-col>
+          </ion-row>
+
+          <!-- Call To Action Button Row ------------------------------------>
+          <ion-row [hidden]="isViewOnlyMode"
+                   style="margin-top: 2vmax;"
+                   class="max-width-550 ion-justify-content-center">
+            <ion-col size="6">
+              <!-- Cancel Button -------------------------------------------->
+              <ion-button (click)="goBack()"
+                          class="secondary-btn ion-activatable ripple-parent"
+                          shape="round"
+                          expand="block"
+                          mode="ios"
+                          fill="outline">
+                <ion-ripple-effect style="display: flex;
+                                      justify-content: start;
+                                      left: -26px;
+                                      right: -26px;">
+                </ion-ripple-effect>
+                Cancel
+              </ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <!-- Save Button ------------------------------------------------>
+              <ion-button (keyup.enter)="onSubmitForm()"
+                          (click)="onSubmitForm()"
+                          [disabled]="formObj.invalid"
+                          [ngClass]="{'primary-btn-disabled': formObj.invalid}"
+                          class="primary-btn ion-activatable ripple-parent"
+                          shape="round"
+                          expand="block"
+                          mode="ios"
+                          fill="solid">
+                <ion-ripple-effect style="display: flex;
+                                      justify-content: start;
+                                      left: -25px;
+                                      right: -25px;">
+                </ion-ripple-effect>
+                Save
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+
+      </main>
+
+
+    </ng-template>
+  </ng-container>
+</ion-content>

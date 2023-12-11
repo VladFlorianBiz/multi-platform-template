@@ -1,0 +1,134 @@
+ion-content {
+  --color: black;
+  background-color: white;
+  --background: white;
+  // --background: dark;
+  // background-color: dark;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  margin-top: 0rem;
+  // padding: 1rem;
+  text-align: center;
+  left: 0;
+  right: 0;
+}
+
+.header {
+  position: relative;
+  text-align: center;
+  // background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
+  background-image: linear-gradient(to right top, #593153, #512c4c, #4a2745, #42233e, #3b1e37);
+  color: white;
+
+  width: 104%;
+  transform: translateX(-2%) translateY(-16%);
+}
+
+.logo {
+  width: 50px;
+  fill: white;
+  padding-right: 15px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.inner-header {
+  height: 100vh;
+  height: 100dvh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  padding-top: 25vh;
+  padding-top: 25dvh;
+
+}
+
+.flex {
+  /*Flexbox for containers*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.waves {
+  position: relative;
+  width: 100%;
+  height: 15vh;
+  height: 15dvh;
+  margin-bottom: -7px;
+  /*Fix for safari gap*/
+  min-height: 100px;
+  max-height: 150px;
+}
+
+.content {
+  position: relative;
+  height: 20vh;
+  height: 20dvh;
+  text-align: center;
+  background-color: white;
+}
+
+/* Animation */
+
+// .parallax>use {
+//   animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+// }
+
+.parallax>use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+
+.parallax>use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+
+.parallax>use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+
+.parallax>use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height: 40px;
+    min-height: 40px;
+  }
+
+  .content {
+    height: 30vh;
+    height: 30dvh;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 600px) {}
+
+
+
+@media only screen and (min-width: 600px) {}

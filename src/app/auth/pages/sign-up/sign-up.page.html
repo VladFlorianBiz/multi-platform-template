@@ -1,0 +1,244 @@
+<ion-content fullscreen="true"
+             scrollX="false">
+  <!-- Form Container  -------------------------------------------------------------------------------------------------------------------------------->
+  <form class="remove-all-style"
+        [formGroup]="formObj"
+        novalidate>
+
+    <!-- Main Responsive Grid Row Container ----------------------------------------------------------------------------------------------------------->
+    <ion-grid>
+      <ion-row class="full-view-height ion-justify-content-center">
+        <ion-col class="ion-align-self-center ion-no-padding"
+                 size-xs="10.5"
+                 size-sm="10"
+                 size-md="7"
+                 size-lg="6">
+
+          <!-- Multi Line Page Title  ---------------------------------------------------->
+          <ion-row class="max-width-550 no-top-bottom-padding ion-justify-content-center">
+            <ion-col size="12">
+              <h1 class="multi-line-page-title"
+                  style="margin-bottom: 0.3em;">
+                Sign up
+              </h1>
+            </ion-col>
+          </ion-row>
+
+          <!-- Full Name Input Row ---------------------------------------------------------------------------->
+          <ion-row style="margin-top: 2vh; margin-top: 2dvh;  margin-bottom: 0.75em;"
+                   class="no-top-bottom-padding max-width-550 ion-justify-content-center">
+            <ion-col size="12">
+              <!-- Full Name Input ----------------------------------------------------------------------------->
+              <ion-item [ngClass]="{'errorItem': !formObj.controls['fullName'].valid && inputTouchedOnce.fullName}"
+                        class="auth-input-item"
+                        lines="full"
+                        mode="md">
+                <!-- Form Input Label Container -------------------------------------------->
+                <ion-label position="floating"
+                           color="light">
+                  <!-- Form Input Label ----------------------------------------------------->
+                  <span *ngIf="!(!formObj.controls['fullName'].valid && inputTouchedOnce.fullName)">
+                    Full Name*
+                  </span>
+                  <!-- On form input error replace form label with error message -------->
+                  <span *ngIf="!formObj.controls['fullName'].valid && inputTouchedOnce.fullName">
+                    {{errorMsgs.fullName}}
+                  </span>
+                </ion-label>
+                <!-- Form Input ------------------------------>
+                <ion-input legacy="true"  (ionBlur)="onInputBlur('fullName')"
+                           type="text"
+                           inputmode="text"
+                           autocomplete="name"
+                           formControlName="fullName">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <!-- Email Input Row -------------------------------------------------------------------------------->
+          <ion-row style="margin-bottom: 0.75em;"
+                   class="max-width-550 no-top-bottom-padding ion-justify-content-center">
+            <ion-col size="12">
+              <!-- Email Input ----------------------------------------------------------------------------->
+              <ion-item [ngClass]="{'errorItem': !formObj.controls['email'].valid && inputTouchedOnce.email}"
+                        class="auth-input-item"
+                        lines="full"
+                        mode="md">
+                <!-- Form Input Label Container -------------------------------------------->
+                <ion-label position="floating"
+                           color="light">
+                  <!-- Form Input Label ----------------------------------------------------->
+                  <span *ngIf="!(!formObj.controls['email'].valid && inputTouchedOnce.email)">
+                    Email*
+                  </span>
+                  <!-- On form input error replace form label with error message -------->
+                  <span *ngIf="!formObj.controls['email'].valid && inputTouchedOnce.email">
+                    {{errorMsgs.email}}
+                  </span>
+                </ion-label>
+                <!-- Form Input ------------------------------>
+                <ion-input legacy="true"  (ionBlur)="onInputBlur('email')"
+                           type="email"
+                           autocomplete="email"
+                           inputmode="email"
+                           formControlName="email">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+
+          <!-- Phone # Input Row -------------------------------------------------------------------------------->
+          <!-- <ion-row style="margin-bottom: 0.75em;"
+                   class="max-width-550 no-top-bottom-padding ion-justify-content-center">
+            <ion-col size="12">
+              <ion-item [ngClass]="{'errorItem': !formObj.controls['phone'].valid && inputTouchedOnce.phone}"
+                        class="auth-input-item"
+                        lines="full"
+                        mode="md">
+                <ion-label position="floating"
+                           color="light">
+                  <span *ngIf="!(!formObj.controls['phone'].valid && inputTouchedOnce.phone)">
+                    Phone
+                  </span>
+                  <span *ngIf="!formObj.controls['phone'].valid && inputTouchedOnce.phone">
+                    {{errorMsgs.phone}}
+                  </span>
+                </ion-label>
+                <ion-input legacy="true"  (ionBlur)="onInputBlur('phone')"
+                           type="tel"
+                           inputmode="tel"
+                           autocomplete="tel"
+                           formControlName="phone">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row> -->
+
+          <!-- Password Input Row -------------------------------------------------------------------------------->
+          <ion-row style="margin-bottom: 0.75em;"
+                   class="max-width-550 no-top-bottom-padding ion-justify-content-center">
+            <ion-col size="12">
+              <!-- Password Input -------------------------------------------------------------------------------->
+              <ion-item [ngClass]="{'errorItem': !formObj.controls['password'].valid && inputTouchedOnce.password}"
+                        class="auth-input-item"
+                        lines="full"
+                        mode="md">
+                <!-- Form Input Label Container --------------------------------------------------->
+                <ion-label position="floating"
+                           color="light">
+                  <!-- Form Input Label ----------------------------------------------------------->
+                  <span *ngIf="!(!formObj.controls['password'].valid && inputTouchedOnce.password)">
+                    Password*
+                  </span>
+                  <!-- Replace Form Input Label with error message on error --------------------->
+                  <span *ngIf="!formObj.controls['password'].valid && inputTouchedOnce.password">
+                    {{errorMsgs.password}}
+                  </span>
+                </ion-label>
+                <!-- Form Input ------------------------------>
+                <ion-input legacy="true"  (keyup.enter)="onCreateAccount()"
+                           (ionBlur)="onInputBlur('password')"
+                           type="password"
+                           autocomplete="new-password"
+                           formControlName="password">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <!-- CONFIRM password Input Row ------------------------------------------------------------------------->
+          <ion-row style="margin-bottom: 0.75em;"
+                   class="max-width-550 no-top-bottom-padding ion-justify-content-center">
+            <ion-col size="12">
+              <!-- CONFIRM password Input ------------------------------------------------------------------------->
+              <ion-item [ngClass]="{'errorItem':  inputTouchedOnce.passwordConfirm && formObj.hasError('notSame')}"
+                        class="auth-input-item"
+                        lines="full"
+                        mode="md">
+                <!-- Form Input Label Container --------------------------------------------------->
+                <ion-label position="floating"
+                           color="light">
+                  <!-- Form Input Label ----------------------------------------------------------->
+                  <span *ngIf="!(inputTouchedOnce.passwordConfirm && formObj.hasError('notSame')) ">
+                    Confirm Password*
+                  </span>
+                  <!-- Replace Form Input Label with error message on error --------------------->
+                  <span *ngIf="inputTouchedOnce.passwordConfirm && formObj.hasError('notSame')">
+                    {{errorMsgs.passwordConfirm}}
+                  </span>
+                </ion-label>
+                <!-- Form Input ------------------------------>
+                <ion-input legacy="true"  (keyup.enter)="onCreateAccount()"
+                           (ionBlur)="onInputBlur('passwordConfirm')"
+                           type="password"
+                           autocomplete="off"
+                           formControlName="passwordConfirm">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <!-- I Agree to Terms Checkbox --------------------------------------------->
+          <ion-row style="margin-top: -10px;"
+                   class="max-width-550 ion-justify-content-start">
+            <ion-item class="transparentItem agreeToTermsCheckBoxItem noStartPadding"
+                      lines="none">
+              <ion-checkbox legacy="true"  slot="start" labelPlacement="end"
+                            (keyup.enter)="onCreateAccount()"
+                            formControlName="agreedToTerms"
+                            class=""></ion-checkbox>
+              <ion-text style="font-weight: 600; color: var(--white);"
+                        class="fontBtn">
+                &nbsp; I agree to X terms <a class="open-terms-link"
+                   (click)="openTerms()">terms and conditions</a>
+              </ion-text>
+            </ion-item>
+          </ion-row>
+
+          <!-- Sign Up/Login Button Row -------------------------------------->
+          <ion-row style="margin-top: 2vmax;"
+                   class="max-width-550 ion-justify-content-center">
+            <ion-col size="6">
+              <!-- Sign Up Button -------------------------------------------->
+              <ion-button (click)="goBack()"
+                          class="auth-secondary-btn ion-activatable ripple-parent"
+                          shape="round"
+                          expand="block"
+                          mode="ios"
+                          fill="outline">
+                <ion-ripple-effect style="display: flex;
+                                          justify-content: start;
+                                          left: -26px;
+                                          right: -26px;">
+                </ion-ripple-effect>
+                Login Instead
+              </ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <!-- Login Button -------------------------------------------->
+              <ion-button (keyup.enter)="onCreateAccount()"
+                          (click)="onCreateAccount()"
+                          [disabled]="formObj.invalid "
+                          class="auth-primary-btn ion-activatable ripple-parent"
+                          shape="round"
+                          expand="block"
+                          mode="ios"
+                          fill="solid">
+                <ion-ripple-effect style="display: flex;
+                                          justify-content: start;
+                                          left: -25px;
+                                          right: -25px;">
+                </ion-ripple-effect>
+                Create Account
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </form>
+</ion-content>

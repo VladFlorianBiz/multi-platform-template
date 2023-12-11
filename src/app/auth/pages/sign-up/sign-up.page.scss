@@ -1,0 +1,71 @@
+ion-content {
+  --color: #fff;
+  --background: none;
+  background: url(/../../assets/images/background8.jpg) no-repeat 0 0;
+  background-size: cover;
+  background-position: center center;
+}
+
+.dateOfBirth {
+  ion-input {
+    cursor: pointer !important;
+
+    input {
+      cursor: pointer !important;
+    }
+
+    .native-input.sc-ion-input-md {
+      cursor: pointer !important;
+    }
+
+    input.native-input {
+      cursor: pointer !important;
+    }
+  }
+}
+
+ion-checkbox .item-cover {
+  display: none;
+}
+
+ion-checkbox {
+  position: relative;
+  --background: white;
+  color: var(--ion-color-secondary);
+  --color: var(--ion-color-secondary);
+  --background-checked: var(--ion-color-secondaryAccent);
+  --border-color: var(--ion-color-secondaryAccent);
+  --checkmark-color: var(--ion-color-primary);
+  --checkmark-width: 4px;
+  --transition: background-color 15ms linear;
+}
+
+ion-item ion-input {
+  cursor: pointer !important;
+}
+
+ion-item ion-input:hover {
+  cursor: pointer !important;
+}
+
+
+.agreeToTermsCheckBoxItem.ion-activatable {
+  --padding-start: 10px; //Left padding if direction is left-to-right,and right padding if direction is right-to-left of the item 
+  --background-hover: transparent; // Background of the button on hover 
+
+  ion-text {
+    position: relative;
+    z-index: 10;
+  }
+}
+
+
+.open-terms-link {
+  color: var(--ion-color-secondary);
+  cursor: pointer;
+}
+
+.open-terms-link:hover {
+    color: var(--ion-color-secondary-tint);
+
+}

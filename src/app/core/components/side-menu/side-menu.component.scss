@@ -1,0 +1,112 @@
+
+
+ion-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --background: var(--ion-color-primary);
+  height: 100%;
+  --ion-safe-area-bottom: 24px;
+}
+
+ion-content::part(scroll) {
+  padding-top: var(--ion-safe-area-top, 0);
+  padding-bottom: var(--ion-safe-area-bottom, 0);
+  padding-left: var(--ion-safe-area-left, 0);
+  padding-right: var(--ion-safe-area-right, 0);
+}
+
+
+.sideMenuContainer {
+    --padding-top: 56px;
+    --background: #FAFAFA;
+    
+}
+
+
+.sidemenu-header {
+  cursor: pointer;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    --background-activated: var(--ion-color-primary);
+    --color-activated: white;
+    --detail-icon-color: var(--ion-color-primary);
+    --detail-icon-opacity: 1;
+
+}
+
+.logout-btn {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 99 !important;
+      --background-activated: var(--ion-color-primary);
+    --color-activated: white;
+    --detail-icon-color: var(--ion-color-primary);
+    --detail-icon-opacity: 1;
+    margin-bottom: 1rem;
+    
+}
+
+
+.profileHoverColor {
+  --background-hover: #69ADD3 !important;
+  --background-hover-opacity: 0.4 !important;
+}
+
+.nameHoverColor {
+  --background-hover-opacity: 0.3 !important;
+}
+
+
+
+
+.roundedImage {
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid #69ADD3 !important;
+
+  overflow: hidden;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  width: 44px;
+  height: 44px;
+}
+
+
+
+
+.nav-item {
+   filter: grayscale(100%) opacity(0.7);
+}
+
+
+.nav-item:hover {
+
+
+    filter: grayscale(0%) opacity(1) !important;
+    // background: var(--bg-secondary) !important;
+    // --background: var(--bg-secondary) !important;
+
+
+}
+
+.active-item {
+     filter: grayscale(0%) opacity(1) !important;
+
+  .ion-label{
+    filter: grayscale(0%) opacity(1) !important;
+    color: var(--text-secondary);
+    --color: var(--text-secondary);
+  }
+}
+
+
+
+.nav-item:not(.active-item) {
+  // Your styles here
+  background-color: red;
+}

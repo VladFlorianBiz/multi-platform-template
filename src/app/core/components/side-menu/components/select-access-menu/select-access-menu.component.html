@@ -1,0 +1,32 @@
+<!-- List Of Access Profiles ------------------------------------------------------------------>
+  <!-- <ion-item *ngFor="let accessProfile of accessProfilesList"
+            lines="full"
+            (click)="selectAccessProfile(accessProfile)"
+            button
+            >
+    <ion-thumbnail slot="start"
+                   class="profileHoverColor roundedImage">
+      <img src="assets/img/snopass.png">
+    </ion-thumbnail>
+    <ion-label class="ion-text-wrap"><b>{{accessProfile.clientName}} Account</b></ion-label>
+  </ion-item> -->
+
+  <!-- User Access Profile ---------------------------------------------------->
+  <ion-item [hidden]="currentAccessProfile.id === null && accessView !== null"
+            lines="full"
+            (click)="selectUserProfile()"
+            button
+           >
+    <ion-thumbnail slot="start"
+                   class="profileHoverColor roundedImage">
+      <img src="assets/img/snopass.png">
+    </ion-thumbnail>
+    <ion-label class="ion-text-wrap"><b>Access Profiles</b></ion-label>
+  </ion-item>
+
+    <!-- Empty Item For CSS Styling Hack On Mobile ----------------------------->
+    <ion-item [hidden]="!isMobileView"
+              button
+              (click)="closeMenu()"
+              style="opacity: 0 !important;" class="transparent">
+    </ion-item>

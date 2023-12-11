@@ -1,0 +1,56 @@
+<!----------------------------------------------------------------------------------------------------------->
+<!-- Page Content(similar to <body> check out index.html to see structure) ---------------------------------->
+<ion-content scrollbarStyle
+             fullscreen="true"
+             scrollX="false">
+
+    <!--------------------------------------------------------------------->
+    <!-- ion-header ------------------------------------------------------->
+  <ion-header slot="fixed"
+              style="align-self: start;"
+              class="ion-no-border">
+    <div class="header-container max-width-1080">
+
+        <!-- ion-toolbar -------------------------------------------------->
+        <ion-toolbar>
+
+          <!-- Page Title ------------------------------------------------->
+          <ion-title class="page-title text-align-center"
+                     color="primary">
+            Email List
+          </ion-title>
+
+          <!-- Button wrapper on right of header -------------------------->
+          <ion-buttons slot="primary">
+            <ion-fab-button (click)="goToCreateEmailPage()"
+                            class="add-btn"
+                            size="small"
+                            mode="ios">
+              <ion-icon name="add">
+              </ion-icon>
+            </ion-fab-button>
+
+          </ion-buttons>
+        </ion-toolbar>
+      </div>
+    </ion-header>
+
+
+  <!--------------------------------------------------------------------------------------------------------->
+  <!-- Container for page content adds margin based on side menu -------------------------------------------->
+  <main #scrollArea>
+
+      <ion-row class="no-top-bottom-padding max-width-550 ion-justify-content-center">
+        <ion-col size="12">
+          <!-- Email Item (loop through list) -------------------------------->
+            <cstm-email-item *ngFor="let item of emailList; trackBy: trackByFn"
+                            (onClick)="goToEmailDetailPage(item)"
+                            [name]="item?.name"
+                            [description]="item?.description"
+                            [email]="item">
+            </cstm-email-item>
+        </ion-col>
+      </ion-row>
+
+  </main>
+</ion-content>

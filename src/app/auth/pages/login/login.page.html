@@ -1,0 +1,152 @@
+<ion-content fullscreen="true"
+             scrollX="false">
+            
+  <!-- Form Container  -------------------------------------------------------------------------------------------------------------------------------->
+  <form class="remove-all-style"
+        [formGroup]="formObj"
+        novalidate>
+
+        
+    <!-- Main Responsive Grid Row Container ----------------------------------------------------------------------------------------------------------->
+    <ion-grid>
+      <ion-row class="full-view-height ion-justify-content-center">
+        <ion-col class="ion-align-self-center ion-no-padding"
+                 size-xs="10.5"
+                 size-sm="10"
+                 size-md="7"
+                 size-lg="6">
+
+          <!-- Multi Line Page Title  ---------------------------------------------------->
+          <ion-row class="max-width-550 no-top-bottom-padding ion-justify-content-center">
+            <ion-col size="12">
+                   <ion-img class="logoImg  animate__animated animate__flipInX animate__slower"
+                    src='assets/images/logo1.png'></ion-img>
+              <!-- <h1 class="multi-line-page-title">
+                Login
+              </h1> -->
+            </ion-col>
+          </ion-row>
+
+          <!-- Email Input Row ---------------------------------------------------------------------------->
+          <ion-row  style="margin-top: 2dvh; 
+                           margin-bottom: 1.5em;"
+                   class="no-top-bottom-padding max-width-550 ion-justify-content-center">
+            <ion-col size="12">
+              <!-- Email Input ----------------------------------------------------------------------------->
+              <ion-item [ngClass]="{'errorItem': !formObj.controls['email'].valid && inputTouchedOnce.email}"
+                        class="auth-input-item"
+                        lines="full"
+                        mode="md">
+                <!-- Form Input Label Container -------------------------------------------->
+                <ion-label position="floating"
+                           color="light">
+                  <!-- Form Input Label ----------------------------------------------------->
+                  <span *ngIf="!(!formObj.controls['email'].valid && inputTouchedOnce.email)">
+                    Email*
+                  </span>
+                  <!-- On form input error replace form label with error message -------->
+                  <span *ngIf="!formObj.controls['email'].valid && inputTouchedOnce.email">
+                    {{errorMsgs.email}}
+                  </span>
+                </ion-label>
+                <!-- Form Input ------------------------------>
+                <ion-input legacy="true"  style="caret-color: white !important; "
+                           (keyup.enter)="onLogin()"
+                           (ionBlur)="onInputBlur('email')"
+                           type="email"
+                           autocomplete="email"
+                           formControlName="email">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+
+
+          <!-- Password Input Row -------------------------------------------------------------------------------->
+          <ion-row class="max-width-550 no-top-bottom-padding ion-justify-content-center">
+            <ion-col size="12">
+              <!-- Password Input -------------------------------------------------------------------------------->
+              <ion-item [ngClass]="{'errorItem': !formObj.controls['password'].valid && inputTouchedOnce.password}"
+                        class="auth-input-item"
+                        lines="full"
+                        mode="md">
+                <!-- Form Input Label Container --------------------------------------------------->
+                <ion-label position="floating"
+                           color="light">
+                  <!-- Form Input Label ----------------------------------------------------------->
+                  <span *ngIf="!(!formObj.controls['password'].valid && inputTouchedOnce.password)">
+                    Password*
+                  </span>
+                  <!-- Replace Form Input Label with error message on error --------------------->
+                  <span *ngIf="!formObj.controls['password'].valid && inputTouchedOnce.password">
+                    {{errorMsgs.password}}
+                  </span>
+                </ion-label>
+                <!-- Form Input ------------------------------>
+                <ion-input legacy="true"  (keyup.enter)="onLogin()"
+                           (ionBlur)="onInputBlur('password')"
+                           type="password"
+                           autocomplete="current-password"
+                           formControlName="password">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <!-- Forgot Password Button Row ------------------------->
+          <ion-row style="margin-top: -10px;"
+                   class="max-width-550 ion-justify-content-start">
+            <ion-button (click)="onForgotPassword()"
+                        expand="block"
+                        fill="clear"
+                        color="light">
+              Forgot Password?
+            </ion-button>
+          </ion-row>
+
+          <!-- Sign Up/Login Button Row -------------------------------------->
+          <ion-row style="margin-top: 2vmax;"
+                   class="max-width-550 ion-justify-content-center">
+            <ion-col size="6">
+              <!-- Sign Up Button -------------------------------------------->
+              <ion-button (click)="onSignUp()"
+                          class="auth-secondary-btn ion-activatable ripple-parent"
+                          shape="round"
+                          expand="block"
+                          mode="ios"
+                          fill="outline">
+                <ion-ripple-effect style="display: flex;
+                                          justify-content: start;
+                                          left: -26px;
+                                          right: -26px;">
+                </ion-ripple-effect>
+                Sign Up
+              </ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <!-- Login Button -------------------------------------------->
+              <ion-button (keyup.enter)="onLogin()"
+                          (click)="onLogin()"
+                          [disabled]="formObj.invalid"
+                          class="auth-primary-btn ion-activatable ripple-parent"
+                          shape="round"
+                          expand="block"
+                          mode="ios"
+                          fill="solid">
+                <ion-ripple-effect style="display: flex;
+                                          justify-content: start;
+                                          left: -25px;
+                                          right: -25px;">
+                </ion-ripple-effect>
+                Login
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </form>
+</ion-content>

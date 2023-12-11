@@ -1,0 +1,92 @@
+<!-- Show When Uploading Is In Progress -------------------------------------------------->
+
+
+<!-- <mat-video title="My Tutorial Title"
+              [autoplay]="true"
+              [preload]="true"
+              [fullscreen]="true"
+              [download]="false"
+              color="accent"
+              spinner="spin"
+              poster="/assets/img/tv-frame6.png">
+     <source matVideoSource
+             [src]="downloadUrl"
+             type="video/mp4">
+
+   </mat-video> -->
+<!-- </ion-card> -->
+
+
+
+<!-- <ion-card>
+<video [src]="downloadUrl"
+       controls
+       controlsList="nofullscreen nodownload"
+       src="https://s3.eu-central-1.amazonaws.com/pipe.public.content/short.mp4"
+       preload="none"> </video>
+
+</ion-card>
+ -->
+
+
+
+
+<!-- Show When Upload Is Completed --------------------------------------------------->
+<ion-card class="hover-card" >
+              <img style="width: 100%; height: auto;"
+                   alt="Silhouette of mountains"
+                   [src]="(downloadUrl?.length > 0) ? downloadUrl : '/../../assets/images/no-photo.png'" />
+
+
+  <ion-card-header style="padding-top: 4px; padding-bottom: 4px;" *ngIf="uploadComplete">
+    <div>
+      <ion-card-title style="text-align: start;">
+        <ion-row class="ion-align-items-center ion-justify-content-between">
+        Media File
+  <ion-fab *ngIf="showDownloadBtn == true ||  showDeleteBtn == true"
+           vertical="bottom"
+           horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="settings-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="downloadFile()"
+                      *ngIf="showDownloadBtn">
+        <ion-icon name="download-outline"></ion-icon>
+      </ion-fab-button >
+      <ion-fab-button (click)="deleteFile()"
+                      *ngIf="showDeleteBtn">
+        <ion-icon name="trash"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+        </ion-row>
+      </ion-card-title>
+      <!-- <h3 style="text-align: start;">Cool Stuff </h3> -->
+    </div>
+  </ion-card-header>
+
+  <ion-card-content [hidden]="uploadComplete">
+    <div 
+         class="container"
+         class="ion-text-wrap"
+         *ngIf="(percentage | async) as pct">
+      <ion-row class="ion-justify-content-center align-items-center ion-text-center"
+               style="padding-bottom: 25px;">
+
+        <ion-item class="transparentItem" lines="none">
+          <ion-spinner name="lines-sharp"></ion-spinner>
+        </ion-item>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-start ion-text-center">
+        <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
+      </ion-row>
+      <ion-row class="ion-justify-content-center ion-text-center"
+               style="padding-top:20px;">
+        <b> {{ pct | number:'2.0-0'}}%</b>
+      </ion-row>
+    </div>
+
+  </ion-card-content>
+</ion-card>

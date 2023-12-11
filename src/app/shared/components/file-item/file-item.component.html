@@ -1,0 +1,350 @@
+<!-- Show When Uploading Is In Progress -------------------------------------------------->
+
+
+<!-- <mat-video title="My Tutorial Title"
+              [autoplay]="true"
+              [preload]="true"
+              [fullscreen]="true"
+              [download]="false"
+              color="accent"
+              spinner="spin"
+              poster="/assets/img/tv-frame6.png">
+     <source matVideoSource
+             [src]="downloadUrl"
+             type="video/mp4">
+
+   </mat-video> -->
+<!-- </ion-card> -->
+
+
+
+<!-- <ion-card>
+<video [src]="downloadUrl"
+       controls
+       controlsList="nofullscreen nodownload"
+       src="https://s3.eu-central-1.amazonaws.com/pipe.public.content/short.mp4"
+       preload="none"> </video>
+
+</ion-card>
+ -->
+
+
+<!----------------- -->
+<!-- Is AUDIO TYPE -->
+<ion-grid *ngIf="unlinkedMedia?.media?.format == mediaFormatOptions?.audio || linkedMedia?.format == mediaFormatOptions?.audio">
+  <ion-row *ngIf="!uploadComplete">
+    <ion-col size="12">
+      <ion-spinner></ion-spinner>
+
+    </ion-col>
+  </ion-row>
+
+
+  <ion-row *ngIf="uploadComplete">
+    <ion-col [size]="showDeleteBtn ? '10' : '12'">
+      <audio controls
+             style="width: 100%; height: 55px;"
+             [src]="(downloadUrl?.length > 0) ? downloadUrl : null">
+
+        Your browser does not support the audio element.
+      </audio>
+    </ion-col>
+
+    <ion-col *ngIf="showDeleteBtn"
+             size="2">
+      <ion-button (click)="deleteFile()"
+                  size="small"
+                  fill="outline"
+                  shape="circle"
+                  style="--padding-start: 5px;
+                                     --padding-end: 5px;
+                                     margin-right: 5px; --width: 44px;
+                                     --height: 44px;
+                                     width: 44px;
+                                     height: 44px;">
+        <ion-icon slot="icon-only"
+                  color="danger"
+                  name="trash-outline"></ion-icon>
+      </ion-button>
+
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
+
+
+
+
+<!----------------- -->
+<!-- Is Image TYPE -->
+<ion-card class="hover-card"
+          *ngIf="unlinkedMedia?.media?.format == mediaFormatOptions?.image || linkedMedia?.format == mediaFormatOptions?.image ">
+
+
+  <!-- If Is Image Type ------------------------------------------------------------------------------>
+  <img *ngIf="unlinkedMedia?.media?.format == mediaFormatOptions?.image || linkedMedia?.format == mediaFormatOptions?.image"
+       style="width: 100%; height: auto;"
+       alt="Silhouette of mountains"
+       [src]="(downloadUrl?.length > 0) ? downloadUrl : '/../../assets/images/no-photo.png'" />
+
+
+  <!-- If Is Audio Type ------------------------------------------------------------------------------>
+
+  <ion-card-header style="padding-top: 4px; padding-bottom: 4px;"
+                   *ngIf="uploadComplete">
+    <div>
+      <ion-card-title style="text-align: start;">
+        <ion-row class="ion-align-items-center ion-justify-content-between">
+          Media File
+
+          <ion-fab *ngIf="showDownloadBtn == true ||  showDeleteBtn == true"
+                   vertical="bottom"
+                   horizontal="end">
+            <ion-fab-button>
+              <ion-icon name="settings-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-list side="start">
+              <ion-fab-button (click)="downloadFile()"
+                              *ngIf="showDownloadBtn">
+                <ion-icon name="download-outline"></ion-icon>
+              </ion-fab-button>
+              <ion-fab-button (click)="deleteFile()"
+                              *ngIf="showDeleteBtn">
+                <ion-icon name="trash"></ion-icon>
+              </ion-fab-button>
+            </ion-fab-list>
+          </ion-fab>
+        </ion-row>
+      </ion-card-title>
+      <!-- <h3 style="text-align: start;">Cool Stuff </h3> -->
+    </div>
+  </ion-card-header>
+
+  <ion-card-content *ngIf="!uploadComplete">
+    <div class="container"
+         class="ion-text-wrap"
+         *ngIf="(percentage | async) as pct">
+      <ion-row class="ion-justify-content-center align-items-center ion-text-center"
+               style="padding-bottom: 25px;">
+
+        <ion-item class="transparentItem"
+                  lines="none">
+          <ion-spinner name="lines-sharp"></ion-spinner>
+        </ion-item>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-start ion-text-center">
+        <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
+      </ion-row>
+      <ion-row class="ion-justify-content-center ion-text-center"
+               style="padding-top:20px;">
+        <b> {{ pct | number:'2.0-0'}}%</b>
+      </ion-row>
+    </div>
+
+  </ion-card-content>
+</ion-card>
+
+
+<!----------------- -->
+<!-- Is Text/PDF/EXCEL TYPE -->
+<ion-card class="stylish-item"
+          *ngIf="unlinkedMedia?.media?.format != mediaFormatOptions?.audio &&
+                 linkedMedia?.format != mediaFormatOptions?.audio &&
+                 unlinkedMedia?.media?.format != mediaFormatOptions?.video &&
+                 linkedMedia?.format != mediaFormatOptions?.video && 
+                  unlinkedMedia?.media?.format != mediaFormatOptions?.image &&
+                  linkedMedia?.format != mediaFormatOptions?.image">
+
+
+  <!-- <img *ngIf="!uploadComplete"
+       style="width: 100%; height: auto;"
+       alt="Silhouette of mountains"
+       [src]="'/../../assets/images/filetype.png'" /> -->
+
+  <ion-item *ngIf="uploadComplete"
+            lines="none"
+            class="stylish-item"
+            button
+            style="--min-height: 99px; --padding-top: 12px; align-items: flex-start;"
+            detail="false">
+
+    <ion-avatar style="margin-top: 12px;"
+                slot="start"
+                class="stylish-avatar">
+      <ion-img [src]="'/../../assets/images/filetype.png'">
+      </ion-img>
+    </ion-avatar>
+
+
+    <ion-label style="    margin-right: 64px;
+" class="ion-text-wrap stylish-label">
+      <h2>
+        <ion-text color="dark">
+          <span *ngIf="unlinkedMedia?.id?.length > 0"> <b> {{unlinkedMedia?.media?.originalFileName}}</b></span>
+          <span *ngIf="linkedMedia?.id?.length > 0"> <b>File Name:</b> {{linkedMedia?.originalFileName}}</span>
+        </ion-text>
+      </h2>
+      <p style="    font-weight: 700;">
+        <span *ngIf="unlinkedMedia?.id?.length > 0"><b>File Type:</b> {{unlinkedMedia?.media?.format}}</span>
+        <span *ngIf="linkedMedia?.id?.length > 0"><b>File Type:</b> {{linkedMedia?.format}}</span>
+        <p>
+
+          <p style="    font-weight: 700;">
+            <span *ngIf="unlinkedMedia?.id?.length > 0"><b>Meta Data:</b> {{unlinkedMedia?.media?.metaDataKeyValue ?? 'None'}}</span>
+            <span *ngIf="linkedMedia?.id?.length > 0"><b>Meta Data:</b> {{linkedMedia?.metaDataKeyValue ?? 'None'}} </span>
+          </p>
+    </ion-label>
+
+    <!-- <div>
+      <span class="footer-text align-left"
+            style="margin-right: auto !important;"> -->
+
+        <ion-fab *ngIf="showDownloadBtn == true ||  showDeleteBtn == true ||  showEditMetaDataBtn == true"
+                 vertical="top"
+                 horizontal="end">
+          <ion-fab-button>
+            <ion-icon name="settings-outline"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-list side="start">
+            <ion-fab-button (click)="editFileMetaData()"
+                            *ngIf="showEditMetaDataBtn">
+              <ion-icon name="build-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button (click)="downloadFile()"
+                            *ngIf="showDownloadBtn">
+              <ion-icon name="download-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button (click)="deleteFile()"
+                            *ngIf="showDeleteBtn">
+              <ion-icon name="trash"></ion-icon>
+            </ion-fab-button>
+          </ion-fab-list>
+        </ion-fab>
+  </ion-item>
+
+  <ion-item lines="none"
+            button
+            detail="false"
+             lines="inset"
+             mode="md"
+            class="animate__animated animate__flipInX animate__fast stylish-item transparentItem"
+            *ngIf="showMetaDataFlag">
+      <ion-grid class="ion-no-padding">
+        <ion-row>
+            <ion-col size="5">
+                <ion-item lines="inset"
+                          mode="md"
+                          detail="false"
+                          class="transparentItem">
+                      <ion-textarea labelPlacement="floating"
+                     
+                                 label="Key"
+                                 [value]="key"></ion-textarea>
+
+                </ion-item>
+            </ion-col>
+                        <ion-col size="5">
+                          <ion-item lines="inset"
+                                    mode="md"
+                                    detail="false"
+                                    class="transparentItem">
+                            <ion-textarea [autoGrow]="true"
+                                          labelPlacement="floating"
+                                       placeholder="Enter meta data value"
+                                       label="value"
+                                       [value]="value"></ion-textarea>
+
+                          </ion-item>
+                        </ion-col>
+
+                              <ion-col size="2">
+                               
+                              </ion-col>
+        </ion-row>
+
+                <ion-row  class="ion-justify-content-center">
+                    <div>
+                      <ion-button shape="round"
+                                  fill="outline">Add Key/Value</ion-button>
+                      <!-- <ion-button shape="round"
+                                  fill="outline">Save</ion-button> -->
+                    </div>
+                  </ion-row>
+                       <ion-row class="ion-justify-content-center">
+                         <div>
+                           <ion-button color="secondary" shape="round"
+                                       fill="solid"><ion-label color="light">Save</ion-label></ion-button>
+                           <!-- <ion-button shape="round"
+                                  fill="outline">Save</ion-button> -->
+                         </div>
+                       </ion-row>
+      </ion-grid>
+  </ion-item>
+
+  <ion-item *ngIf="!uploadComplete"
+            lines="none"
+            class="stylish-item"
+            button
+            style="--min-height: 99px; --padding-top: 12px; align-items: flex-start;"
+            detail="false">
+
+    <ion-avatar style="margin-top: 12px;"
+                slot="start"
+                class="stylish-avatar">
+      <ion-img [src]="'/../../assets/images/filetype.png'">
+      </ion-img>
+    </ion-avatar>
+
+
+         
+
+
+    <ion-label class="ion-text-wrap stylish-label">
+      <h2>
+        <ion-text color="dark">
+          <span *ngIf="unlinkedMedia?.id?.length > 0"> <b> {{unlinkedMedia?.media?.originalFileName}}</b></span>
+          <span *ngIf="linkedMedia?.id?.length > 0"> <b>File Name:</b> {{linkedMedia?.originalFileName}}</span>
+        </ion-text>
+      </h2>
+      <p style="    font-weight: 700;">
+        <span *ngIf="unlinkedMedia?.id?.length > 0"><b>File Type:</b> {{unlinkedMedia?.media?.format}}</span>
+        <span *ngIf="linkedMedia?.id?.length > 0"><b>File Type:</b> {{linkedMedia?.format}}</span>
+        <p>
+
+          <p style="    font-weight: 700;">
+            <span *ngIf="unlinkedMedia?.id?.length > 0"><b>Meta Data:</b> {{unlinkedMedia?.media?.metaDataKeyValue ?? 'None'}}</span>
+            <span *ngIf="linkedMedia?.id?.length > 0"><b>Meta Data:</b> {{linkedMedia?.metaDataKeyValue ?? 'None'}} </span>
+          </p>
+    </ion-label>
+
+        <div class="container"
+             class="ion-text-wrap"
+             *ngIf="(percentage | async) as pct">
+
+
+ <ion-row class="ion-justify-content-center align-items-center ion-text-center"
+          style="padding-bottom: 25px;">
+
+   <ion-item class="transparentItem"
+             lines="none">
+     <ion-spinner name="lines-sharp"></ion-spinner>
+   </ion-item>
+ </ion-row>
+
+ <ion-row class="ion-justify-content-start ion-text-center">
+   <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
+ </ion-row>
+ <ion-row class="ion-justify-content-center ion-text-center"
+          style="padding-top:20px;">
+   <b> {{ pct | number:'2.0-0'}}%</b>
+ </ion-row>
+
+ </div>
+    
+
+  </ion-item>
+
+
+</ion-card>

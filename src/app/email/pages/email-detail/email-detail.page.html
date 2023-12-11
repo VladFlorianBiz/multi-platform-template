@@ -1,0 +1,187 @@
+<!----------------------------------------------------------------------------------------------------------->
+<!-- Page Content(similar to <body> check out index.html to see structure) ---------------------------------->
+<ion-content scrollbarStyle
+             fullscreen="true"
+             scrollX="false">
+
+      <!------------------------------------------------------------------------>
+      <!-- ion-header ---------------------------------------------------------->
+  <ion-header slot="fixed"
+              style="align-self: start;"
+              class=" ion-no-border">
+    <div class="header-container max-width-1080">
+
+          <!-- ion-toolbar -------------------------------->
+          <ion-toolbar>
+
+            <!-- Button wrapper on left of header --->
+            <ion-buttons slot="secondary">
+              <ion-fab-button (click)="goBack()"
+                              class="back-btn"
+                              size="small"
+                              mode="ios">
+                <ion-icon name="arrow-back">
+                </ion-icon>
+              </ion-fab-button>
+            </ion-buttons>
+
+            <!-- Page Title ------------------------------------------------->
+            <ion-title class="page-title text-align-center"
+                       color="primary">
+              <span *ngIf="isViewOnlyMode">View</span>
+              <span *ngIf="!isViewOnlyMode">Update</span> Email
+            </ion-title>
+
+            <!-- Button wrapper on right of header ----------------->
+            <ion-buttons slot="primary">
+              <ion-fab-button (click)="deleteEmail()"
+                              class="add-btn"
+                              size="small"
+                              color="danger"
+                              mode="ios">
+                <ion-icon name="trash">
+                </ion-icon>
+              </ion-fab-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </div>
+      </ion-header>
+
+
+  <!--------------------------------------------------------------------------------------------------------->
+  <!-- Page Form Container ---------------------------------------------------------------------------------->
+  <form style="all: revert;"
+        [formGroup]="formObj"
+        novalidate>
+
+    <!------------------------------------------------------------------------------------------------------->
+    <!-- Container for page content adds margin based on side menu ------------------------------------------>
+    <main #scrollArea
+          style="margin-top: 8rem;">
+
+
+          <!-- Input Row --------------------------------------------------------------------------------->
+      <ion-row class="no-top-bottom-padding max-width-550 ion-justify-content-center">
+        <ion-col size="12">
+          <!------------------------------------------------------------------------------------------>
+          <ion-item [ngClass]="{'errorItem': !formObj.controls['name'].valid && inputTouchedOnce.name}"
+                    class="input-container"
+                    lines="inset"
+                    mode="md">
+            <!-- Label Container ------------------------------------------------------>
+            <ion-label position="floating">
+              <!-- Label -------------------------------------------------------------->
+              <span *ngIf="!(!formObj.controls['name'].valid && inputTouchedOnce.name)">
+                Name*
+              </span>
+              <!-- On error replace form label with error message ------------------->
+              <span *ngIf="!formObj.controls['name'].valid && inputTouchedOnce.name">
+                Input a name
+              </span>
+            </ion-label>
+            <!-- Form Input --------------------------->
+            <ion-input legacy="true"  [readonly]="isViewOnlyMode"
+                       (ionBlur)="onInputBlur('name')"
+                       type="text"
+                       formControlName="name">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <!-- Input Row ------------------------------------------------------------------------------------------------>
+      <ion-row class="no-top-bottom-padding max-width-550 ion-justify-content-center">
+        <ion-col size="12">
+          <!--------------------------------------------------------------------------------------------------------->
+          <ion-item [ngClass]="{'errorItem': !formObj.controls['description'].valid && inputTouchedOnce.description}"
+                    class="input-container"
+                    lines="inset"
+                    mode="md">
+            <!-- Label Container -------------------------------------------------------------------->
+            <ion-label position="floating">
+              <!-- Label ----------------------------------------------------------------------------->
+              <span *ngIf="!(!formObj.controls['description'].valid && inputTouchedOnce.description)">
+                Description*
+              </span>
+              <!-- On error replace form label with error message ---------------------------------->
+              <span *ngIf="!formObj.controls['description'].valid && inputTouchedOnce.description">
+                Input a description
+              </span>
+            </ion-label>
+            <!-- Form Input ------------------------------------->
+            <ion-textarea [readonly]="isViewOnlyMode"
+                          [autoGrow]="true"
+                          (ionBlur)="onInputBlur('description')"
+                          type="text"
+                          formControlName="description">
+            </ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <!-- Preview Row -------------------------------------------------------------->
+      <ion-row class="no-top-bottom-padding max-width-550 ion-justify-content-center">
+        <ion-col size="12">
+          <ion-item class="preview-ion-container"
+                    lines="full"
+                    mode="md">
+            <ion-label class="section-title">
+              Preview
+            </ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="no-top-bottom-padding max-width-550 ion-justify-content-center">
+        <ion-col size="12">
+          <!-- Email Card Item   ------------------->
+          <cstm-email-item [name]="formObj?.value?.name"
+                                            [description]="formObj?.value?.description">
+          </cstm-email-item>
+        </ion-col>
+      </ion-row>
+
+      <!-- Call To Action Button Row ------------------------------------>
+      <ion-row [hidden]="isViewOnlyMode"
+               style="margin-top: 2vmax;"
+               class="max-width-550 ion-justify-content-center">
+        <ion-col size="6">
+          <!-- Cancel Button -------------------------------------------->
+          <ion-button (click)="goBack()"
+                      class="secondary-btn ion-activatable ripple-parent"
+                      shape="round"
+                      expand="block"
+                      mode="ios"
+                      fill="outline">
+            <ion-ripple-effect style="display: flex;
+                                      justify-content: start;
+                                      left: -26px;
+                                      right: -26px;">
+            </ion-ripple-effect>
+            Cancel
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <!-- Save Button ------------------------------------------------>
+          <ion-button (keyup.enter)="onSubmitForm()"
+                      (click)="onSubmitForm()"
+                      [disabled]="formObj.invalid"
+                      [ngClass]="{'primary-btn-disabled': formObj.invalid}"
+                      class="primary-btn ion-activatable ripple-parent"
+                      shape="round"
+                      expand="block"
+                      mode="ios"
+                      fill="solid">
+            <ion-ripple-effect style="display: flex;
+                                      justify-content: start;
+                                      left: -25px;
+                                      right: -25px;">
+            </ion-ripple-effect>
+            Save
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+    </main>
+  </form>
+</ion-content>

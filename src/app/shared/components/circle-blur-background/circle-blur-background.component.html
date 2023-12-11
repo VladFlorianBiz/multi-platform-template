@@ -1,0 +1,17 @@
+
+
+<div 
+     class="container"
+     [style.--size]="size"
+      [style.--margin]="margin"
+      [style.--padding]="padding"
+     [style.--mobile-size]="mobileSize"
+     [style.--color1]="color1"
+      [style.--color2]="color2">
+    <div class="gradient"></div>
+  <div [class]="'content-on-top' + ' ' + className">
+        <ng-content ></ng-content>
+  </div>
+</div>
+
+

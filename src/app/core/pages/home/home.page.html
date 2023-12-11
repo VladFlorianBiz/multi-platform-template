@@ -1,0 +1,856 @@
+<ion-content [scrollEvents]="true"
+             (ionScroll)="handleScroll($any($event))"
+             scrollbarStyle
+             fullscreen="true"
+             scrollX="false">
+
+
+  <!-- ion-header ------------------------------------------------------->
+  <ion-header *ngIf="isMobileView"
+              slot="fixed"
+              style="align-self: start;"
+              class="ion-no-border"
+              [class.hideNavBarFlag]="hideNavBarFlag">
+    <div class="header-container"
+         style="background: rgb(255 255 255 / 50%); ">
+
+
+
+      <cstm-waves-background *ngIf="!hideNavBarFlag "
+                             [animated]="false"
+                             color1="#ffffffB3"
+                             color2="#ffffff80"
+                             color3="#ffffff4C"
+                             color4="#ffffff"
+                             backgroundColor1="#05251d"
+                             backgroundColor2="#05251d"
+                             height="44vh">
+        <cstm-glowing-text fontSize="16vw"
+                           style="    position: fixed;
+    top: 111px;"
+                           glowRadius="50px"
+                           backgroundColor="transparent"
+                           fontSize="14vw"
+                           height="none"
+                           color1="#FFE7C4"
+                           color2="#FFD5A5"
+                           color3="#FFC085"
+                           text="ABCD">
+        </cstm-glowing-text>
+
+
+
+        <ion-row style="position: absolute;  bottom: 15%;"
+                 class="ion-justify-content-center">
+          <cstm-animated-text title="Unlock&nbsp;Your&nbsp;Breath"
+                              titleColor="#ffffff"
+                              subTitle="Feel your best"
+                              subTitleColor="#fff"
+                              backgroundColor="transparent"
+                              height="150px"
+                              width="300px">
+          </cstm-animated-text>
+
+          <ion-col class="ion-no-padding"
+                   size="12">
+            <ion-row class="ion-justify-content-center">
+              <ion-button (click)="goToChatPage()"
+                          class="primary-btn ion-activatable ripple-parent"
+                          shape="round"
+                          size="large"
+                          expand="block"
+                          mode="ios"
+                          fill="solid">
+                <ion-ripple-effect style="display: flex;
+                                      justify-content: start;
+                                      left: -25px;
+                                      right: -25px;">
+                </ion-ripple-effect>
+                Start Chat
+              </ion-button>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </cstm-waves-background>
+
+
+
+      <cstm-waves-background *ngIf="hideNavBarFlag "
+                             style=" transition: all .2s ease 0s;"
+                             [animated]="false"
+                             color1="#ffffffB3"
+                             color2="#ffffff80"
+                             color3="#ffffff4C"
+                             color4="#ffffff"
+                             backgroundColor1="#05251d"
+                             backgroundColor2="#05251d"
+                             height="12vh">
+        <cstm-glowing-text [animationClass]="'animate__fadeInUpCustom'"
+                           animateOnce
+                           glowRadius="50px"
+                           backgroundColor="transparent"
+                           fontSize="14vw"
+                           height="none"
+                           color1="#FFE7C4"
+                           color2="#FFD5A5"
+                           color3="#FFC085"
+                           text="ABCD">
+        </cstm-glowing-text>
+      </cstm-waves-background>
+    </div>
+  </ion-header>
+  <!-- <div addOrRemoveClassOnIntersection
+       className="expand-navbar"
+       elementId="navbarElement"
+       (addOrRemoveClassEvent)="addOrRemoveClassEvent($event)"
+       style="top: -1px; padding-top: 32px; margin-bottom: -32px;"></div> -->
+
+
+  <main>
+
+    <!--------------------------------------------------------------------------------------------------------->
+    <!-- Page Form Container ---------------------------------------------------------------------------------->
+    <form style="all: revert;"
+          [formGroup]="formObj"
+          novalidate>
+      <cstm-waves-background *ngIf="!isMobileView"
+                             [animated]="false"
+                             color1="#ffffffB3"
+                             color2="#ffffff80"
+                             color3="#ffffff4C"
+                             color4="#ffffff"
+                             backgroundColor1="#05251d"
+                             backgroundColor2="#05251d"
+                             height="64vh">
+        <!-- <h1 style="font-size: 44px;  margin-top: 18vh;">Home</h1> -->
+        <!-- this is really cool 
+                          color1="cyan"
+                          color2="yellow"
+                          color3="tomato" -->
+        <cstm-glowing-text [animationClass]="'animate__fadeInCustom'"
+                           animateOnce
+                           glowRadius="50px"
+                           backgroundColor="transparent"
+                           fontSize="10vw"
+                           height="none"
+                           color1="#FFE7C4"
+                           color2="#FFD5A5"
+                           color3="#FFC085"
+                           text="ABCD">
+        </cstm-glowing-text>
+
+        <!--------------------------------------------------------------------------------------------->
+        <!-- Animated Text  ----------------------------------------------------------------------------->
+        <!-- <ion-row class="no-top-bottom-padding ion-justify-content-center ion-no-padding">
+  <ion-col class="ion-no-padding">
+ 
+  </ion-col>
+</ion-row> -->
+        <ion-row style="position: absolute;  bottom: 15%;"
+                 class="ion-justify-content-center">
+          <cstm-animated-text title="Unlock&nbsp;Your&nbsp;Breath"
+                              titleColor="#ffffff"
+                              subTitle="Feel your best"
+                              subTitleColor="#fff"
+                              backgroundColor="transparent"
+                              height="150px"
+                              width="300px">
+          </cstm-animated-text>
+
+          <!-- 
+<ion-label  style="    font-size: 31px;
+    font-family: 'Montserrat';
+        margin-bottom: 42px;
+    ">Create your custom chatbot in minutes</ion-label> -->
+
+          <ion-col class="ion-no-padding"
+                   size="12">
+            <ion-row class="ion-justify-content-center">
+              <ion-button [animationClass]="'animate__fadeInUpCustom'"
+                          animateOnce
+                          (click)="goToChatPage()"
+                          class="primary-btn ion-activatable ripple-parent"
+                          shape="round"
+                          size="large"
+                          expand="block"
+                          mode="ios"
+                          fill="solid">
+                <ion-ripple-effect style="display: flex;
+                                      justify-content: start;
+                                      left: -25px;
+                                      right: -25px;">
+                </ion-ripple-effect>
+                Sign Up
+              </ion-button>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </cstm-waves-background>
+      <!-- backgroundColor1="#7209b7" backgroundColor2="#f48c06" -->
+      <!-- backgroundColor1="#5e5e5e" backgroundColor2="#f39c12" -->
+      <!-- backgroundColor1="#424949" backgroundColor2="#27ae60" -->
+      <!-- backgroundColor1="#424949" backgroundColor2="#27ae60" -->
+
+
+
+
+      <ion-grid style="margin-bottom: 10vh; margin-top: 4vh; padding-left: 0; padding-right: 0;">
+        <ion-row class="ion-justify-content-center max-width-1080"
+                 style="margin-bottom: 10vh;">
+          <ion-col size-xs="12"
+                   size-sm="12"
+                   size-md="12"
+                   size-lg="12">
+
+            <!-- Feature row -->
+            <ion-row style="display: flex; justify-content: space-around;">
+
+
+
+              <!---------------------------------------------------------------------------------------------->
+              <!-- Feature Item  ----------------------------------------------------------------------------->
+              <div class="featureItem">
+                <!-- Icon  -->
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 512 512">
+                  <path fill="currentColor"
+                        class="fa-primary"
+                        d="M154 120.8c22.6 3.5 41.3 18.9 49.5 39.6c-5.6 9.4-15.8 15.6-27.5 15.6c-17.7 0-32-14.3-32-32c0-9.1 3.8-17.4 10-23.2zM360.8 122c22 5.3 40.1 20.6 49.1 40.9c-5.8 8-15.2 13.1-25.9 13.1c-17.7 0-32-14.3-32-32c0-8.5 3.3-16.3 8.8-22zM100.4 307.8c-2.3-10.2 5.5-19.8 15.9-19.8H395.7c10.4 0 18.1 9.6 15.9 19.8c-5 22.3-14.6 42.7-27.7 60.2c-13.4-10-30-16-47.9-16c-44.2 0-80 35.8-80 80c-74.3 0-139.5-51.6-155.6-124.2z" />
+                  <path fill="currentColor"
+                        class="fa-secondary"
+                        d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM144 120c35.3 0 64 28.7 64 64v10.3c0 16.4-13.3 29.7-29.7 29.7H109.7C93.3 224 80 210.7 80 194.3V184c0-35.3 28.7-64 64-64zm128 72c0-39.8 32.2-72 72-72s72 32.2 72 72v7.5c0 13.5-11 24.5-24.5 24.5H296.5C283 224 272 213 272 199.5V192zM116.3 288H395.7c10.4 0 18.1 9.6 15.9 19.8C395.5 380.4 330.3 432 256 432s-139.5-51.6-155.6-124.2c-2.3-10.2 5.5-19.8 15.9-19.8z" />
+                </svg>
+
+                <h2>Feature 1</h2>
+
+                <ion-label [animationClass]="'animate__fadeInLeftCustom'"
+                           animateOnce
+                           color="primary">
+                  eiusmod magna amet aliqua eiusmod dolore do dolor amet ipsum eiusmod et tempor incididunt lorem elit lorem sed magna incididunt ut consectetur elit magna dolore consectetur
+                </ion-label>
+
+              </div>
+
+
+              <!---------------------------------------------------------------------------------------------->
+              <!-- Feature Item  ----------------------------------------------------------------------------->
+              <div class="featureItem">
+                <!-- Icon  -->
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 512 512">
+                  <path fill="currentColor"
+                        class="fa-primary"
+                        d="M240 272V456h32V384h34.7c6.6 18.6 24.4 32 45.3 32c26.5 0 48-21.5 48-48s-21.5-48-48-48c-20.9 0-38.7 13.4-45.3 32H272V160h48c8.8 0 16 7.2 16 16v2.7c-18.6 6.6-32 24.4-32 45.3c0 26.5 21.5 48 48 48s48-21.5 48-48c0-20.9-13.4-38.7-32-45.3V176c0-26.5-21.5-48-48-48H272V56H240v72H205.3c-6.6-18.6-24.4-32-45.3-32c-26.5 0-48 21.5-48 48s21.5 48 48 48c20.9 0 38.7-13.4 45.3-32H240v80H192c-26.5 0-48 21.5-48 48v34.7c-18.6 6.6-32 24.4-32 45.3c0 26.5 21.5 48 48 48s48-21.5 48-48c0-20.9-13.4-38.7-32-45.3V288c0-8.8 7.2-16 16-16h48zM176 144a16 16 0 1 1 -32 0 16 16 0 1 1 32 0zm176 96a16 16 0 1 1 0-32 16 16 0 1 1 0 32zM176 368a16 16 0 1 1 -32 0 16 16 0 1 1 32 0zm192 0a16 16 0 1 1 -32 0 16 16 0 1 1 32 0z" />
+                  <path fill="currentColor"
+                        class="fa-secondary"
+                        d="M240 56c0-30.9-25.1-56-56-56c-28.9 0-52.7 21.9-55.7 49.9C100.6 56.9 80 82.1 80 112c0 6 .8 11.9 2.4 17.4C53.6 135.7 32 161.3 32 192c0 15 5.1 28.8 13.8 39.7C18.7 244.5 0 272.1 0 304c0 34.2 21.4 63.4 51.6 74.8C49.3 385.4 48 392.6 48 400c0 35.3 28.7 64 64 64c5.6 0 11.1-.7 16.3-2.1c2.9 28.2 26.8 50.1 55.7 50.1c30.9 0 56-25.1 56-56V272H192c-8.8 0-16 7.2-16 16v34.7c18.6 6.6 32 24.4 32 45.3c0 26.5-21.5 48-48 48s-48-21.5-48-48c0-20.9 13.4-38.7 32-45.3V288c0-26.5 21.5-48 48-48h48V160H205.3c-6.6 18.6-24.4 32-45.3 32c-26.5 0-48-21.5-48-48s21.5-48 48-48c20.9 0 38.7 13.4 45.3 32H240V56zm32 104V352h34.7c6.6-18.6 24.4-32 45.3-32c26.5 0 48 21.5 48 48s-21.5 48-48 48c-20.9 0-38.7-13.4-45.3-32H272v72c0 30.9 25.1 56 56 56c28.9 0 52.7-21.9 55.7-50.1c5.2 1.4 10.7 2.1 16.3 2.1c35.3 0 64-28.7 64-64c0-7.4-1.3-14.6-3.6-21.2C490.6 367.4 512 338.2 512 304c0-31.9-18.7-59.5-45.8-72.3C474.9 220.8 480 207 480 192c0-30.7-21.6-56.3-50.4-62.6c1.6-5.5 2.4-11.4 2.4-17.4c0-29.9-20.6-55.1-48.3-62.1C380.6 21.9 356.9 0 328 0c-30.9 0-56 25.1-56 56v72h48c26.5 0 48 21.5 48 48v2.7c18.6 6.6 32 24.4 32 45.3c0 26.5-21.5 48-48 48s-48-21.5-48-48c0-20.9 13.4-38.7 32-45.3V176c0-8.8-7.2-16-16-16H272z" />
+                </svg>
+                <h2>Feature 2</h2>
+
+                <ion-label [animationClass]="'animate__fadeInUpCustom'"
+                           animateOnce
+                           color="primary">
+                  aliqua consectetur dolore adipiscing incididunt sed magna lorem ipsum labore dolore sit consectetur ipsum incididunt lorem magna magna amet ut do ipsum eiusmod labore cons
+                </ion-label>
+
+              </div>
+
+
+
+              <!---------------------------------------------------------------------------------------------->
+              <!-- Feature Item  ----------------------------------------------------------------------------->
+              <div class="featureItem">
+                <!-- Icon  -->
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 576 512">
+                  <path class="fa-secondary"
+                        fill="currentColor"
+                        d="M419.2 227.2L316.7 124.7 46.1 395.4c-18.7 18.7-18.7 49.1 0 67.9l34.6 34.6c18.7 18.7 49.1 18.7 67.9 0L419.2 227.2z" />
+                  <path fill="currentColor"
+                        class="fa-primary"
+                        d="M234.7 42.7L248.8 5c1.1-3 4-5 7.2-5s6.1 2 7.2 5l14.1 37.7L315 56.8c3 1.1 5 4 5 7.2s-2 6.1-5 7.2L277.3 85.3 263.2 123c-1.1 3-4 5-7.2 5s-6.1-2-7.2-5L234.7 85.3 197 71.2c-3-1.1-5-4-5-7.2s2-6.1 5-7.2l37.7-14.1zm295.2 73.9L419.2 227.2l-39.6-39.6 105-105L461.4 59.3l-105 105-39.6-39.6L427.4 14.1c18.7-18.7 49.1-18.7 67.9 0l34.6 34.6c18.7 18.7 18.7 49.1 0 67.9zM7.5 117.2L64 96 85.2 39.5C86.9 35 91.2 32 96 32s9.1 3 10.8 7.5L128 96l56.5 21.2c4.5 1.7 7.5 6 7.5 10.8s-3 9.1-7.5 10.8L128 160l-21.2 56.5c-1.7 4.5-6 7.5-10.8 7.5s-9.1-3-10.8-7.5L64 160 7.5 138.8C3 137.1 0 132.8 0 128s3-9.1 7.5-10.8zm352 256L416 352l21.2-56.5c1.7-4.5 6-7.5 10.8-7.5s9.1 3 10.8 7.5L480 352l56.5 21.2c4.5 1.7 7.5 6 7.5 10.8s-3 9.1-7.5 10.8L480 416l-21.2 56.5c-1.7 4.5-6 7.5-10.8 7.5s-9.1-3-10.8-7.5L416 416l-56.5-21.2c-4.5-1.7-7.5-6-7.5-10.8s3-9.1 7.5-10.8z" />
+                </svg>
+                <h2>Feature 3</h2>
+
+                <ion-label [animationClass]="'animate__fadeInRightCustom'"
+                           animateOnce
+                           color="primary"> adipiscing labore ipsum aliqua amet adipiscing eiusmod ipsum tempor sed dolor adipiscing incididunt magna amet ipsum aliqua et consectetur incididunt incididunt sed eiusmod labo </ion-label>
+              </div>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+
+
+        <cstm-waves-full-background [animated]="false"
+                                    color1="#ffffffB3"
+                                    color2="#ffffff80"
+                                    color3="#ffffff4C"
+                                    color4="#ffffff"
+                                    backgroundColor1="#05251d"
+                                    backgroundColor2="#05251d"
+                                    height="66vh">
+
+          <cstm-glowing-text glowRadius="50px"
+                             backgroundColor="transparent"
+                             fontSize="clamp(39px, 10vw, 88px)"
+                             height="none"
+                             color1="#FFE7C4"
+                             color2="#FFD5A5"
+                             color3="#FFC085"
+                             text="Learn&nbsp;More">
+          </cstm-glowing-text>
+
+
+
+          <div class="video-container">
+            <iframe src=""
+                    frameborder="0"
+                    allowfullscreen>
+            </iframe>
+
+          </div>
+
+
+        </cstm-waves-full-background>
+
+
+        <ion-row style="    margin-top: 46px;"
+                 class="ion-justify-content-center max-width-1080">
+          <ion-col size-xs="12"
+                   size-sm="12"
+                   size-md="12"
+                   size-lg="12">
+            <ion-label [animationClass]="'animate__fadeInDownCustom'"
+                       animateOnce
+                       class="title"
+                       style="font-weight:600;">Features </ion-label>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row class="ion-justify-content-center max-width-1080">
+          <ion-col size-xs="12"
+                   size-sm="12"
+                   size-md="6"
+                   size-lg="6"
+                   push-md="6"
+                   push-lg="6"
+                   class="ion-padding"
+                   [animationClass]="'animate__fadeInUpCustom'"
+                   animateOnce>
+            <img src="/assets/images/feat1.png"
+                 class="styled-image">
+          </ion-col>
+          <ion-col size-xs="12"
+                   size-sm="12"
+                   size-md="6"
+                   size-lg="6"
+                   class="ion-align-self-center"
+                   pull-md="6"
+                   pull-lg="6"
+                   [animationClass]="'animate__fadeInRightCustom'"
+                   animateOnce>
+            <h2 class="ion-margin-bottom">Feature 1</h2>
+            <p>ipsum labore magna sit incididunt dolor amet incididunt et magna ut aliqua eiusmod aliqua tempor sit ut ut sed incididunt amet ipsum magna magna ipsum eiusmod sed sit eiusmod incididunt consectetur amet et eiusmod dolor ut amet tempor elit ali</p>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row class="ion-justify-content-center max-width-1080">
+          <ion-col size-xs="12"
+                   size-sm="12"
+                   size-md="6"
+                   size-lg="6"
+                   class="ion-align-self-center"
+                   [animationClass]="'animate__fadeInUpCustom'"
+                   animateOnce>
+            <img src="/assets/images/feat2.png"
+                 class="styled-image">
+          </ion-col>
+          <ion-col [animationClass]="'animate__fadeInRightCustom'"
+                   animateOnce
+                   size-xs="12"
+                   size-sm="12"
+                   size-md="6"
+                   size-lg="6"
+                   class="ion-padding ">
+            <h2 class="ion-margin-bottom">Feature 2</h2>
+            <p>sit aliqua magna incididunt sed dolore elit lorem labore dolor elit sit elit dolore amet magna lorem incididunt labore adipiscing magna tempor ipsum adipiscing ipsum sed consectetur adipiscing amet sed lab</p>
+          </ion-col>
+        </ion-row>
+
+
+
+
+
+
+        <ion-row class="ion-justify-content-center max-width-1080">
+          <ion-col size-xs="12"
+                   size-sm="12"
+                   size-md="6"
+                   size-lg="6"
+                   push-md="6"
+                   push-lg="6"
+                   class="ion-padding"
+                   [animationClass]="'animate__fadeInUpCustom'"
+                   animateOnce>
+            <img src="/assets/images/feat3.png"
+                 class="styled-image">
+          </ion-col>
+          <ion-col size-xs="12"
+                   size-sm="12"
+                   size-md="6"
+                   size-lg="6"
+                   class="ion-align-self-center"
+                   pull-md="6"
+                   pull-lg="6"
+                   [animationClass]="'animate__fadeInRightCustom'"
+                   animateOnce>
+            <h2 class="ion-margin-bottom">Feature 3 </h2>
+            <p>et aliqua magna ipsum ut labore labore eiusmod ipsum eiusmod sed ipsum ut amet amet amet eiusmod adipiscing elit aliqua eiusmod ipsum elit magna consectetur amet adipiscing amet dolore ipsum labore lorem eiusmod amet labore adipiscing adipiscing ut incididunt ipsum labore sed sed ipsum aliqua elit amet dolore ipsum lore</p>
+          </ion-col>
+        </ion-row>
+
+
+
+        <ion-row class="ion-justify-content-center max-width-1080">
+          <ion-col size-xs="12"
+                   size-sm="12"
+                   size-md="6"
+                   size-lg="6"
+                   class="ion-align-self-center"
+                   [animationClass]="'animate__fadeInUpCustom'"
+                   animateOnce>
+            <img src="/assets/images/feat5c.png"
+                 class="styled-image">
+          </ion-col>
+          <ion-col [animationClass]="'animate__fadeInRightCustom'"
+                   animateOnce
+                   size-xs="12"
+                   size-sm="12"
+                   size-md="6"
+                   size-lg="6"
+                   class="ion-padding ">
+            <h2 class="ion-margin-bottom">Feature 4</h2>
+            <p>sed amet sed lorem tempor dolor consectetur aliqua elit aliqua lorem dolor amet tempor et aliqua lorem sit sit ut dolor adipiscing aliqua sed tempor tempor ut elit tempor dolore dolore et et consectetur amet tempor</p>
+
+          </ion-col>
+        </ion-row>
+
+
+
+        <ion-row class="ion-justify-content-center max-width-1080">
+          <ion-col size-xs="12"
+                   size-sm="12"
+                   size-md="6"
+                   size-lg="6"
+                   push-md="6"
+                   push-lg="6"
+                   class="ion-padding"
+                   [animationClass]="'animate__fadeInUpCustom'"
+                   animateOnce>
+            <img src="/assets/images/feat5.png"
+                 class="styled-image">
+          </ion-col>
+          <ion-col size-xs="12"
+                   size-sm="12"
+                   size-md="6"
+                   size-lg="6"
+                   class="ion-align-self-center"
+                   pull-md="6"
+                   pull-lg="6"
+                   [animationClass]="'animate__fadeInRightCustom'"
+                   animateOnce>
+            <h2 class="ion-margin-bottom">Feature 5</h2>
+            <p>dolore ipsum magna labore consectetur ipsum amet ut sit incididunt tempor et amet ut sit amet amet ipsum amet adipiscing eiusmod tempor et amet dolore et et eius </p>
+          </ion-col>
+        </ion-row>
+
+
+
+
+        <div #pricing
+             id="pricing"></div>
+
+
+        <cstm-waves-full-background [animated]="false"
+                                    color1="#ffffffB3"
+                                    color2="#ffffff80"
+                                    color3="#ffffff4C"
+                                    color4="#ffffff"
+                                    backgroundColor1="#05251d"
+                                    backgroundColor2="#05251d"
+                                    height=" clamp(400px, 50%, 500px);">
+
+          <cstm-glowing-text [style.padding-top.px]="isMobileView ? 88 : 0"
+                             glowRadius="50px"
+                             backgroundColor="transparent"
+                             fontSize="clamp(39px, 10vw, 88px)"
+                             height="none"
+                             color1="#FFE7C4"
+                             color2="#FFD5A5"
+                             color3="#FFC085"
+                             text="Pricing">
+          </cstm-glowing-text>
+          <!-- 
+                  <ion-row style="    margin-top: 46px;"
+                           class="ion-justify-content-center max-width-1080">
+                    <ion-col size-xs="12"
+                             size-sm="12"
+                             size-md="12"
+                             size-lg="12">
+                      <ion-label class="title"
+                                 style="font-weight:600; color: var(--ion-color-secondary);">Pricing </ion-label>
+                    </ion-col>
+                  </ion-row> -->
+
+
+
+          <ion-row [animationClass]="'animate__fadeInDownCustom'"
+                   animateOnce
+                   style="width: 100%;"
+                   class="ion-justify-content-center">
+            <ion-col size-xs="12"
+                     size-sm="12"
+                     size-md="12"
+                     size-lg="12">
+
+
+
+
+              <cstm-pricing (onClick)=onPlanSelected($event)></cstm-pricing>
+
+
+            </ion-col>
+          </ion-row>
+
+
+
+
+        </cstm-waves-full-background>
+
+        <ion-row style="    margin-top: 46px;"
+                 class="ion-justify-content-center max-width-1080"
+                 [animationClass]="'animate__fadeInDownCustom'"
+                 animateOnce>
+          <ion-col size-xs="12"
+                   size-sm="12"
+                   size-md="12"
+                   size-lg="12">
+            <ion-label class="title"
+                       style="font-weight:600;">FAQ </ion-label>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row class="ion-justify-content-center max-width-1080">
+          <!-- Image Column -->
+          <ion-col size-xs="12"
+                   size-sm="12"
+                   size-md="12"
+                   size-lg="12"
+                   class="ion-align-self-center">
+
+
+            <ion-accordion-group class="home_accordion"
+                                 expand="inset"
+                                 [animationClass]="'animate__fadeInUpCustom'"
+                                 animateOnce>
+
+              <!-- Question/Answer Accordion  ---------------------------->
+              <ion-accordion value="1">
+                <ion-item slot="header">
+                  <ion-label style="margin-top: 24px; font-size: 21px;
+    margin-bottom: 24px;">Question 1?</ion-label>
+                </ion-item>
+                <div class="ion-padding"
+                     slot="content">
+                  <ion-label>sed elit magna amet tempor lorem elit aliqua eiusmod sed amet sit adipiscing amet ut magna lorem magna lorem eiusmod consectetur do ipsum sit ipsum incididunt do dolore eiusmod magna incididunt sed incididunt eiusmod sit incididunt ipsum incididunt sit labore lorem aliqua ipsum adipiscing consectetur ut elit
+                  </ion-label>
+                </div>
+              </ion-accordion>
+
+              <!-- Question/Answer Accordion  ---------------------------->
+              <ion-accordion value="2">
+                <ion-item slot="header">
+                  <ion-label style="margin-top: 24px; font-size: 21px;
+    margin-bottom: 24px;">Question 2?</ion-label>
+                </ion-item>
+                <div class="ion-padding"
+                     slot="content">
+                  <ion-label>sed elit magna amet tempor lorem elit aliqua eiusmod sed amet sit adipiscing amet ut magna lorem magna lorem eiusmod consectetur do ipsum sit ipsum incididunt do dolore eiusmod magna incididunt sed incididunt eiusmod sit incididunt ipsum incididunt sit labore lorem aliqua ipsum adipiscing consectetur ut elit
+                  </ion-label>
+                </div>
+              </ion-accordion>
+
+              <!-- Question/Answer Accordion  ---------------------------->
+              <ion-accordion value="3">
+                <ion-item slot="header">
+                  <ion-label style="margin-top: 24px; font-size: 21px;
+    margin-bottom: 24px;">Question 3?</ion-label>
+                </ion-item>
+                <div class="ion-padding"
+                     slot="content">
+                  <ion-label> sed elit magna amet tempor lorem elit aliqua eiusmod sed amet sit adipiscing amet ut magna lorem magna lorem eiusmod consectetur do ipsum sit ipsum incididunt do dolore eiusmod magna incididunt sed incididunt eiusmod sit incididunt ipsum incididunt sit labore lorem aliqua ipsum adipiscing consectetur ut elit</ion-label>
+                </div>
+              </ion-accordion>
+
+              <!-- Question/Answer Accordion  ---------------------------->
+              <ion-accordion value="4">
+                <ion-item slot="header">
+                  <ion-label style="margin-top: 24px; font-size: 21px;
+    margin-bottom: 24px;">Question 4?</ion-label>
+                </ion-item>
+                <div class="ion-padding"
+                     slot="content">
+                  <ion-label> sed elit magna amet tempor lorem elit aliqua eiusmod sed amet sit adipiscing amet ut magna lorem magna lorem eiusmod consectetur do ipsum sit ipsum incididunt do dolore eiusmod magna incididunt sed incididunt eiusmod sit incididunt ipsum incididunt sit labore lorem aliqua ipsum adipiscing consectetur ut elit</ion-label>
+                </div>
+              </ion-accordion>
+
+
+
+              <!-- Question/Answer Accordion  ---------------------------->
+              <ion-accordion value="6">
+                <ion-item slot="header">
+                  <ion-label style="margin-top: 24px; font-size: 21px;
+    margin-bottom: 24px;">Question 5?</ion-label>
+                </ion-item>
+                <div class="ion-padding"
+                     slot="content">
+                  <ion-label> sed elit magna amet tempor lorem elit aliqua eiusmod sed amet sit adipiscing amet ut magna lorem magna lorem eiusmod consectetur do ipsum sit ipsum incididunt do dolore eiusmod magna incididunt sed incididunt eiusmod sit incididunt ipsum incididunt sit labore lorem aliqua ipsum adipiscing consectetur ut elit
+                  </ion-label>
+                </div>
+              </ion-accordion>
+
+
+              <!-- Question/Answer Accordion  ---------------------------->
+              <ion-accordion value="7">
+                <ion-item slot="header">
+                  <ion-label style="margin-top: 24px; font-size: 21px;
+    margin-bottom: 24px;">Question 6?</ion-label>
+                </ion-item>
+                <div class="ion-padding"
+                     slot="content">
+                  <ion-label> sed elit magna amet tempor lorem elit aliqua eiusmod sed amet sit adipiscing amet ut magna lorem magna lorem eiusmod consectetur do ipsum sit ipsum incididunt do dolore eiusmod magna incididunt sed incididunt eiusmod sit incididunt ipsum incididunt sit labore lorem aliqua ipsum adipiscing consectetur ut elit
+                  </ion-label>
+                </div>
+              </ion-accordion>
+
+              <!-- Question/Answer Accordion  ---------------------------->
+              <ion-accordion value="8">
+                <ion-item slot="header">
+                  <ion-label style="margin-top: 24px; font-size: 21px;
+    margin-bottom: 24px;">Question 7?</ion-label>
+                </ion-item>
+                <div class="ion-padding"
+                     slot="content">
+                  <ion-label>sed elit magna amet tempor lorem elit aliqua eiusmod sed amet sit adipiscing amet ut magna lorem magna lorem eiusmod consectetur do ipsum sit ipsum incididunt do dolore eiusmod magna incididunt sed incididunt eiusmod sit incididunt ipsum incididunt sit labore lorem aliqua ipsum adipiscing consectetur ut elit
+                  </ion-label>
+                </div>
+              </ion-accordion>
+
+
+              <!-- Question/Answer Accordion  ---------------------------->
+              <ion-accordion value="9">
+                <ion-item slot="header">
+                  <ion-label style="margin-top: 24px; font-size: 21px;
+    margin-bottom: 24px;">Question 8?</ion-label>
+                </ion-item>
+                <div class="ion-padding"
+                     slot="content">
+                  <ion-label> sed elit magna amet tempor lorem elit aliqua eiusmod sed amet sit adipiscing amet ut magna lorem magna lorem eiusmod consectetur do ipsum sit ipsum incididunt do dolore eiusmod magna incididunt sed incididunt eiusmod sit incididunt ipsum incididunt sit labore lorem aliqua ipsum adipiscing consectetur ut elit
+                  </ion-label>
+                </div>
+              </ion-accordion>
+
+
+            </ion-accordion-group>
+          </ion-col>
+        </ion-row>
+
+
+
+
+
+
+
+
+
+      </ion-grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- <div style="height: 459px"></div> -->
+
+
+      <!----------------------------------------------------------------------------------------->
+      <!-- Footer ------------------------------------------------------------------------------->
+      <cstm-waves-background [animated]="false"
+                             color1="#ffffffB3"
+                             color2="#ffffff80"
+                             color3="#ffffff4C"
+                             color4="#ffffff"
+                             backgroundColor1="#05251d"
+                             backgroundColor2="#05251d"
+                             [inverted]="true"
+                             height="">
+        <ion-row style="width: 100%;">
+          <!-- 1/3 columns -->
+          <ion-col size-xs="12"
+                   size-sm="12"
+                   size-md="12"
+                   size-lg="4">
+            <div style="width: 155px;    
+                        margin: 0 auto;">
+              <h2>ABCD</h2>
+              <ion-img src="assets/images/footer-logo1.png"></ion-img>
+            </div>
+          </ion-col>
+
+          <!-- 2/3 columns -->
+          <ion-col class="ion-align-self-center"
+                   size-xs="12"
+                   size-sm="12"
+                   size-md="12"
+                   size-lg="4">
+            <div style=" margin: 22px auto;">
+
+
+              <ion-row class="no-top-bottom-padding max-width-550 ion-justify-content-center">
+                <ion-col class="ion-no-padding"
+                         size="12">
+                  <!------------------------------------------------------------------------->
+                  <ion-button (click)="joinNewsLetter()"
+                              style="position: relative;
+                                    z-index: 99;
+                                    height: 55px; 
+                                    width: 250px; 
+                                    margin: 0 auto;"
+                              class="primary-btn ion-activatable ripple-parent"
+                              shape="round"
+                              expand="block"
+                              mode="ios"
+                              fill="solid">
+                    <ion-ripple-effect style="display: flex;
+                                      justify-content: start;
+                                      left: -25px;
+                                      right: -25px;">
+                    </ion-ripple-effect>
+                    Learn More
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+              <ion-row class="no-top-bottom-padding max-width-550 ion-justify-content-center">
+                <ion-col size="12"
+                         class="ion-no-padding">
+                  <!------------------------------------------------------------------------->
+                  <ion-item style="--border-width: 2px;
+                                    --border-radius: 0px 0px 25px 25px;
+                                    --border-color: var(--ion-color-secondary) !important;   
+                                    z-index: 0; 
+                                    width: 250px; 
+                                    margin: 0 auto; 
+                                    margin-top: -22px; "
+                            class="newsletter-container transparentItem"
+                            lines="none"
+                            mode="ios">
+                    <!-- Form Input -------------------------->
+                    <ion-input color="secondary"
+                               legacy="true"
+                               style="--padding-top: 33px;"
+                               placeholder="Enter your email..."
+                               formControlName="email"
+                               type="text">
+                    </ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </div>
+          </ion-col>
+
+          <!-- 3/3 columns ---------------->
+          <ion-col class="ion-hide-lg-down"
+                   size-lg="4">
+            <div class="quick-links">
+              <h2>Quick Links</h2>
+              <p (click)="navigateToPage('/home', 'back', true)">Home</p>
+              <p (click)="navigateToPage('/auth/login', 'back', true)">Login&nbsp;/&nbsp;Sign&nbsp;Up</p>
+              <p (click)="navigateToPage('/privacy-policy', 'back', true)">Privacy Policy</p>
+              <p>Contact</p>
+            </div>
+          </ion-col>
+        </ion-row>
+
+
+        <!-- seperate Line ------------------------------>
+        <div style="width: 84vw;
+                    border-bottom: 1px solid #ebebeb;">
+        </div>
+        <div style="width: 84vw; 
+                    display: flex; 
+                    justify-content: space-between; 
+                    align-items: center;">
+          <div>
+            <!-- <p style="color: var(--ion-color-secondary);">© 2023 Impact AI. All rights reserved.</p> -->
+            <p style="color: var(--ion-color-secondary);">© 2023 ABCD.</p>
+          </div>
+          <div [style.display]="(isMobileView) ? 'none' : 'block'">
+            <span style="display: flex;
+                          align-items: center;">
+              <ion-button href="https://www.instagram.com//"
+                          target="_blank"
+                          size="small"
+                          fill="outline"
+                          shape="circle"
+                          style="--padding-start: 5px;
+                                     --background-hover-opacity: 0.5;
+                                     --padding-end: 5px;
+                                     --background-hover: #137dff;
+                                     margin-right: 5px; --width: 44px;
+                                     --height: 44px;
+                                     width: 44px;
+                                     height: 44px;">
+                <ion-icon slot="icon-only"
+                          color="dark"
+                          name="logo-twitter"></ion-icon>
+              </ion-button>
+
+              <ion-button (click)="navigateToPage('/auth/login', 'back', true)"
+                          href="https://www.instagram.com//"
+                          target="_blank"
+                          size="small"
+                          fill="outline"
+                          shape="circle"
+                          style="--padding-start: 5px;
+                                     --background-hover-opacity: 0.5;
+                                     --padding-end: 5px;
+                                     --background-hover: var(--ion-color-secondary);
+                                     margin-right: 5px; --width: 44px;
+                                     --height: 44px;
+                                     width: 44px;
+                                     height: 44px;">
+                <ion-icon slot="icon-only"
+                          color="dark"
+                          name="mail-outline"></ion-icon>
+              </ion-button>
+            </span>
+          </div>
+        </div>
+      </cstm-waves-background>
+
+
+    </form>
+  </main>
+</ion-content>

@@ -1,0 +1,54 @@
+<ion-content>
+  <!-- Form Container  -------------------------------------------------------------------------------------------------------------------------------->
+
+    <ion-grid>
+      <!---- Full Page Holder Row *Used to center ALL PAGE CONTENT vertically + horizontally ----------------------------------------------------->
+      <ion-row class="full-view-height">
+        <ion-col class="ion-align-self-center ion-justify-content-center"
+                 size-sm="6"
+                 offset-sm="3"
+                 size-md="10"
+                 offset-md="1"
+                 size-lg="5"
+                 offset-lg="3.5">
+
+          <!-- Card Container* ------------------------------------------------------------------------------------------------------------->
+          <ion-card class="cardBackground shadowStyle">
+            <ion-card-content>
+
+              <!-- Logo Image Holder -------------------------->
+              <ion-card-title>
+               <!-- <ion-img class="logoImg  animate__animated animate__flipInX animate__slower"
+                        src='assets/images/logo1.png'></ion-img> -->
+              </ion-card-title>
+              
+              <h2 class="ion-text-center  ion-padding-bottom"
+                  style="color:var(--ion-color-primary);"> <b>Email has been verified. Login and get started.</b></h2>
+
+
+              <ion-grid class="ion-padding-top ion-padding-bottom">
+                <ion-row class=" ion-justify-content-center">
+                                <ion-button (keyup.enter)="goToLogin()"
+                                            (click)="goToLogin()"
+                                            class="auth-primary-btn ion-activatable ripple-parent"
+                                            shape="round"
+                                            expand="block"
+                                            mode="ios"
+                                            fill="solid">
+                                  <ion-ripple-effect style="display: flex;
+                                          justify-content: start;
+                                          left: -25px;
+                                          right: -25px;">
+                                  </ion-ripple-effect>
+                                  Login
+                                </ion-button>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+</ion-content>

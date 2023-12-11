@@ -1,0 +1,55 @@
+.iconCardButton {
+
+  h2 {
+    font-weight: 700;
+    color: var(--ion-color-primary) !important;
+  }
+  .score--previous-active {
+    position: absolute;
+    display: table;
+    top: 0;
+    left: 0;
+    // box-shadow: 0 3px 4px 0 rgba(0,0,0,0.18);
+    border-radius: 10px 0 10px 0;
+    background: var(--ion-color-secondary);
+    padding: 1px 10px;
+    color: white;
+    font-size: 16px;
+  }
+
+
+  .score--previous-not-active {
+    position: absolute;
+    display: table;
+    top: 0;
+    left: 0;
+    // box-shadow: 0 3px 4px 0 rgba(0,0,0,0.18);
+    border-radius: 10px 0 10px 0;
+    background: var(--ion-color-primary);
+    padding: 1px 10px;
+    color: white;
+    font-size: 16px;
+  }
+
+
+
+  &.active {
+
+    border: 3px solid var(--ion-color-secondary) !important;
+
+    
+    h2 {
+      font-weight: 700;
+      color: var(--ion-color-secondary) !important;
+      --color: var(--ion-color-primary) !important;
+
+    }
+
+  }
+
+  &:hover {
+    // font-weight: 600;
+    color: var(--ion-color-primary) !important;
+    --color: var(--ion-color-primary) !important;
+  }
+}

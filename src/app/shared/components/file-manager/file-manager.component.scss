@@ -1,0 +1,46 @@
+
+@media only screen and (max-width: 600px) {}
+
+
+
+@media only screen and (min-width: 600px) {}
+
+
+
+.recording-dot {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  margin-right: 10px;
+    animation: pulse 1s infinite alternate;
+
+}
+
+.time-container {
+  width: 80px;
+   font-size: 24px;
+
+       display: flex;
+       align-items: center;
+   margin-right: 8px;
+}
+
+.formatted-item {
+      margin: 0;
+}
+
+
+@keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+}

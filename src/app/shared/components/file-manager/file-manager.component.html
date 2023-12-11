@@ -1,0 +1,187 @@
+            <!-- Input Row ------------------------------------------------------------------------------------------>
+            <ion-row *ngIf="label?.length > 0"
+                     class="no-top-bottom-padding max-width-550 ion-justify-content-start">
+              <ion-col size="12">
+                <!--------------------------------------------------------------------------------------------------->
+                <ion-item class="input-container-label-only"
+                          lines="none"
+                          mode="md">
+                  <ion-label style="font-size: 1rem;
+                                    font-weight: 600;
+                                    color: var(--ion-color-primary);
+                                    margin-bottom: 0;">
+                    {{label ?? 'Upload File' }}
+                  </ion-label>
+                </ion-item>
+
+              </ion-col>
+            </ion-row>
+
+            <!---- ------------------------------------------------------------------------------------------>
+            <ion-row class="no-top-bottom-padding max-width-550 ion-justify-content-start">
+              <!-- Media Items  --------------------------------------->
+
+              <div *ngIf="linkedMedia?.length > 0">
+                <ion-col *ngFor="let item of linkedMedia;"
+                         class="ion-no-padding"
+                         size="12">
+                  <cstm-file-item [showDownloadBtn]="showDownloadBtn"
+                                  [showEditMetaDataBtn]="showEditMetaDataBtn"
+                                  [showDeleteBtn]="showDeleteBtn"
+                                  (removeLinkedMedia)="removeLinkedMedia($event)"
+                                  [linkedMedia]="item">
+                  </cstm-file-item>
+                </ion-col>
+              </div>
+
+
+              <div *ngIf="unlinkedMedia?.length > 0">
+
+                <ion-col *ngFor="let unlinkedItem of unlinkedMedia;"
+                         class="ion-no-padding"
+                         size="12">
+                  <cstm-file-item (removeUnlinkedMedia)="removeUnlinkedMedia($event)"
+                                  (fileUploadComplete)="fileUploadComplete($event)"
+                                  [showDownloadBtn]="showDownloadBtn"
+                                   [showEditMetaDataBtn]="showEditMetaDataBtn"
+                                  [showDeleteBtn]="showDeleteBtn"
+                                  [unlinkedMedia]="unlinkedItem">
+                  </cstm-file-item>
+                </ion-col>
+
+              </div>
+            </ion-row>
+
+            <!-- Input Row ------------------------------------------------------------------------------------------>
+            <ion-row *ngIf="!((unlinkedMedia?.length + linkedMedia?.length) >= limit)"
+                     class="no-top-bottom-padding max-width-550 ion-justify-content-start">
+              <ion-col size="12">
+
+                <ion-row *ngIf="!isAudioFile && !isTextFile"
+                         class="ion-justify-content-start">
+                  <cstm-real-button style="    margin-bottom: 12px;
+    margin-left: 1rem;
+"
+                                    [label]="fileUploadLabel ?? 'Upload file'"
+                                    (click)="fileInput.value=''; fileInput.click();">
+                    <input hidden
+                           type="file"
+                           #fileInput
+                           multiple
+                           (change)="uploadFiles($event.target.files)">
+                  </cstm-real-button>
+                </ion-row>
+
+                <ion-row *ngIf="isAudioFile"
+                         class="ion-justify-content-start">
+
+                  <cstm-real-button *ngIf="!isRecording"
+                                    style="margin-bottom: 12px; margin-left: 1rem;"
+                                    [label]="fileUploadLabel ?? 'Upload file'"
+                                    (click)="fileInput.value=''; fileInput.click();">
+                    <input hidden
+                           type="file"
+                           #fileInput
+                           multiple
+                           (change)="uploadFiles($event.target.files)">
+                  </cstm-real-button>
+
+
+                  <cstm-real-button *ngIf="!isRecording"
+                                    style=" margin-bottom: 12px; margin-left: 1rem;"
+                                    [label]="'Record Audio'"
+                                    (click)="startRecording()">
+
+                  </cstm-real-button>
+
+                  <div *ngIf="isRecording"
+                       style="display: flex;    align-items: center;    ">
+                    <ion-button style="    --padding-start: 4px;  --padding-end: 4px;"
+                                size="large"
+                                fill="clear">
+                      <ion-icon style="    font-size: 69px;"
+                                color="danger"
+                                slot="icon-only"
+                                name="close-circle-outline"></ion-icon>
+                    </ion-button>
+                  
+
+                   <span class="time-container">
+                    
+                    <div style="width: 25px;">
+<div class="recording-dot"></div>
+                    </div>
+                      
+                     <p>{{ formattedTime }}</p>
+                   </span>
+                    <ion-button (click)="stopRecording()"
+                                style="    --padding-start: 4px;  --padding-end: 4px;"
+                                size="large"
+                                fill="clear">
+                      <ion-icon style="    font-size: 69px;"
+                                color="success"
+                                slot="icon-only"
+                                name="stop-circle-outline"></ion-icon>
+                    </ion-button>
+                  </div>
+
+   
+                </ion-row>
+
+                <ion-row *ngIf="isTextFile"
+                         class="ion-justify-content-start">
+
+                  <cstm-real-button *ngIf="!isRecording"
+                                    style="margin-bottom: 12px; margin-left: 1rem;"
+                                    [label]="fileUploadLabel ?? 'Upload file'"
+                                    (click)="fileInput.value=''; fileInput.click();">
+                    <input hidden
+                           type="file"
+                           #fileInput
+                           multiple
+                           (change)="uploadFiles($event.target.files)">
+                  </cstm-real-button>
+
+
+                  <cstm-real-button *ngIf="!isRecording"
+                                    style=" margin-bottom: 12px; margin-left: 1rem;"
+                                    [label]="'Record Audio'"
+                                    (click)="startRecording()">
+
+                  </cstm-real-button>
+
+                  <div *ngIf="isRecording"
+                       style="display: flex;    align-items: center;    ">
+                    <ion-button style="    --padding-start: 4px;  --padding-end: 4px;"
+                                size="large"
+                                fill="clear">
+                      <ion-icon style="    font-size: 69px;"
+                                color="danger"
+                                slot="icon-only"
+                                name="close-circle-outline"></ion-icon>
+                    </ion-button>
+
+
+                    <span class="time-container">
+
+                      <div style="width: 25px;">
+                        <div class="recording-dot"></div>
+                      </div>
+
+                      <p>{{ formattedTime }}</p>
+                    </span>
+                    <ion-button (click)="stopRecording()"
+                                style="    --padding-start: 4px;  --padding-end: 4px;"
+                                size="large"
+                                fill="clear">
+                      <ion-icon style="    font-size: 69px;"
+                                color="success"
+                                slot="icon-only"
+                                name="stop-circle-outline"></ion-icon>
+                    </ion-button>
+                  </div>
+
+
+                </ion-row>
+              </ion-col>
+            </ion-row>

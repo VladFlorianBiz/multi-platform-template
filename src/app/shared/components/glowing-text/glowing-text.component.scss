@@ -1,0 +1,58 @@
+.container-glowing-text {
+  //Config---------------------------------------->
+  $glowRadius: var(--glow-radius); // glow radius
+  font-size: var(--font-size);
+  
+  height: var(--height);
+  //-- couldn't change  ----------->
+  $duration: 2s; // duration
+  $numOfLetters: 7; // # of letters
+  $glowOffset: 25px; // glow offset
+
+  line-height: 1;
+  font-family: Permanent Marker;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--background-color);
+  color: snow;
+
+
+
+  span {
+    animation: glow $duration ease-in-out both infinite;
+
+    @for $i from 1 through $numOfLetters {
+      &:nth-child(#{$i}) {
+        animation-delay: $i/$numOfLetters * -$duration;
+      }
+    }
+  }
+
+  @mixin glow($c1, $c2, $c3) {
+    text-shadow:
+      0 0 calc(var(--glow-radius) / 6) snow,
+      0 (-$glowOffset) var(--glow-radius) $c3,
+      (-$glowOffset) $glowOffset var(--glow-radius) $c2,
+      $glowOffset $glowOffset var(--glow-radius) $c3;
+  }
+
+  @keyframes glow {
+
+    0%,
+    100% {
+      @include glow(var(--color1), var(--color2), var(--color3));
+    }
+
+    33% {
+      @include glow(var(--color2), var(--color3), var(--color1))
+    }
+
+    66% {
+      @include glow(var(--color3), var(--color1), var(--color2))
+    }
+  }
+}
+
+

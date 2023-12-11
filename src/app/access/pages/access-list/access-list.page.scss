@@ -1,0 +1,149 @@
+ion-content {
+  //   background-color: white;
+  //   --background:linear-gradient(180deg, #2B86C5 0%, #784BA0 10%, #FF3CAC 100%);
+  //   --background:linear-gradient(180deg, #FF3CAC 0%, #784BA0 25%, #2B86C5 100%);
+  //   --background: linear-gradient(180deg, #000000 14%, #FF3CaC 19%, #FF3CaC 100%);
+  //   --background:linear-gradient(180deg, #FF3CAC 0%, #784BA0 25%, #2B86C5 100%);
+  //   margin: 0;
+  // margin-left: 5rem;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // text-align: center;
+}
+
+
+main {
+  margin-top: 9rem;
+  margin-left: 5rem;
+}
+ion-toolbar {
+  --background: transparent;
+}
+
+@media only screen and (max-width: 600px) {
+  ion-toolbar {
+    --background: var(--ion-color-primary) !important;
+  }
+
+  ion-header {
+    transition: all 0.5s ease 0s;
+
+    .header-container {
+      margin-left: 0 !important;
+      background: var(--ion-color-primary) !important;
+      padding-top: 3rem;
+      transition: all 0.5s ease 0s;
+    }
+  }
+
+  .hideNavBarFlag {
+    margin-top: 0rem;
+    transition: all 0.5s ease 0s;
+
+    .header-container {
+      padding-top: 0rem !important;
+      transition: all 0.5s ease 0s;
+    }
+  }
+
+  main {
+    margin-top: 14rem;
+    margin-left: 0rem;
+  }
+}
+
+
+
+@media only screen and (min-width: 600px) {}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+
+  /* Styles for screens between 600px and 900px wide */
+  // body {
+  //     font-size: 16px;
+  // }
+}
+
+.stylish-card {
+  // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.stylish-card:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.stylish-item {
+  --min-height: 88px;
+  --padding-end: 14px;
+}
+
+.stylish-item.tapped {
+  background-color: #f0f0f0;
+}
+
+.stylish-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.stylish-label h2 {
+  font-weight: bold;
+}
+
+.stylish-note {
+  font-weight: bold;
+}
+
+
+.footer {
+  // bottom: 2px;
+  display: flex;
+  align-items: flex-end;
+
+}
+
+.footer-text {
+  /* margin-bottom: 3px; */
+  color: lightslategray;
+  font-size: 12px;
+  padding-right: 2px;
+}
+
+
+.checkMarkContainer {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  transform: translate(-3px, 2px) rotate(45deg);
+}
+
+
+.check-mark-stem {
+  position: absolute;
+  width: 2px;
+  height: 14px;
+  background-color: var(--message-check-mark-color);
+  right: 0px;
+  bottom: 4px;
+}
+
+.check-mark-kick {
+  position: absolute;
+  width: 5px;
+  height: 2px;
+  background-color: var(--message-check-mark-color);
+  right: 1px;
+  bottom: 4px;
+}
+
+
+.align-left {
+  margin: 0 0 0 var(--message-padding-content);
+  float: left;
+}

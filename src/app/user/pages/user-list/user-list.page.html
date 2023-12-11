@@ -1,0 +1,58 @@
+<!----------------------------------------------------------------------------------------------------------->
+<!-- Page Content(similar to <body> check out index.html to see structure) ---------------------------------->
+<ion-content scrollbarStyle
+             fullscreen="true"
+             scrollX="false">
+
+  <!--------------------------------------------------------------------->
+  <!-- ion-header ------------------------------------------------------->
+  <ion-header slot="fixed"
+              style="align-self: start;"
+              class="ion-no-border">
+    <div class="header-container"
+         style="background: rgb(255 255 255 / 50%); margin-left: 5rem;">
+
+
+      <!-- ion-toolbar -------------------------------------------------->
+      <ion-toolbar style="max-width: 1080px; margin: 0 auto;  --background: transparent !important;">
+
+        <!-- Page Title ------------------------------------------------->
+        <ion-title class="page-title text-align-center"
+                   color="primary">
+          User List
+        </ion-title>
+
+        <!-- Button wrapper on right of header -------------------------->
+        <ion-buttons slot="primary">
+          <ion-fab-button (click)="goToCreateUserPage()"
+                          class="add-btn"
+                          size="small"
+                          mode="ios">
+            <ion-icon name="add">
+            </ion-icon>
+          </ion-fab-button>
+
+        </ion-buttons>
+
+      </ion-toolbar>
+    </div>
+  </ion-header>
+
+
+  <!--------------------------------------------------------------------------------------------------------->
+  <!-- Container for page content adds margin based on side menu -------------------------------------------->
+  <main #scrollArea>
+
+    <ion-row class="no-top-bottom-padding  ion-justify-content-center">
+      <!-- User Item (loop through list) -------------------------------->
+      <cstm-user-item *ngFor="let item of userList; trackBy: trackByFn"
+                                        (click)="goToUserDetailPage(item)"
+                                        [name]="item?.name"
+                                        [description]="item?.description"
+                                        [user]="item">
+      </cstm-user-item>
+
+    </ion-row>
+
+  </main>
+</ion-content>

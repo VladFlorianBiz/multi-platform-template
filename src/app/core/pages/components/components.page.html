@@ -1,0 +1,268 @@
+<!----------------------------------------------------------------------------------------------------------->
+<!-- Page Content(similar to <body> check out index.html to see structure) ---------------------------------->
+<ion-content scrollbarStyle
+             fullscreen="true"
+             scrollX="false">
+
+  <!--------------------------------------------------------------------->
+  <!-- ion-header ------------------------------------------------------->
+  <ion-header slot="fixed"
+              style="align-self: start;"
+              class="ion-no-border">
+    <div class="header-container"
+         style="background: rgb(255 255 255 / 50%); margin-left: 5rem;">
+
+
+      <!-- ion-toolbar -------------------------------------------------->
+      <ion-toolbar style="max-width: 1080px; margin: 0 auto;  --background: transparent !important;">
+
+        <!-- Page Title ------------------------------------------------->
+        <ion-title class="page-title text-align-center"
+                   color="primary">
+          Components
+        </ion-title>
+      </ion-toolbar>
+    </div>
+  </ion-header>
+
+
+  <!--------------------------------------------------------------------------------------------------------->
+  <!-- Container for page content adds margin based on side menu -------------------------------------------->
+  <main #scrollArea>
+
+
+
+        <!--------------------------------------------------------------------------------------------->
+        <!-- Component Label -------------------------------------------------------------------------->
+        <ion-row style="margin-top: 55px;
+                    margin-bottom: 12px;"
+                 class="no-top-bottom-padding ion-justify-content-center max-width-550 ion-no-padding">
+          <ion-button fill="outline">
+            <ion-label color="primary">Animated Blob Button</ion-label>
+          </ion-button>
+        </ion-row>
+        <!--------------------------------------------------------------------------------------------->
+        <!-- Animated Blob Button  ----------------------------------------------------------------------------->
+        <ion-row
+                 class="no-top-bottom-padding ion-justify-content-center ion-no-padding">
+          <cstm-animated-blob-btn height="150px"
+                                     width="200px">
+          </cstm-animated-blob-btn>
+        </ion-row>
+
+
+
+    <!--------------------------------------------------------------------------------------------->
+    <!-- Component Label -------------------------------------------------------------------------->
+    <ion-row style="margin-top: 55px;
+                    margin-bottom: 12px;"
+             class="no-top-bottom-padding ion-justify-content-center max-width-550 ion-no-padding">
+      <ion-button fill="outline">
+        <ion-label color="primary">Moving Radius Circle</ion-label>
+      </ion-button>
+    </ion-row>
+    <!--------------------------------------------------------------------------------------------->
+    <!-- Moving Radius Circle  ----------------------------------------------------------------------------->
+    <ion-row style=" background: black; padding-top: 15px; padding-bottom: 15px; "
+             class="no-top-bottom-padding ion-justify-content-center ion-no-padding">
+          <cstm-moving-radius-circle 
+                                     height="250px"
+                                     width="250px"
+                                     >
+          </cstm-moving-radius-circle>
+    </ion-row>
+
+
+
+
+
+    <!--------------------------------------------------------------------------------------------->
+    <!-- Component Label -------------------------------------------------------------------------->
+    <ion-row style="margin-top: 55px;
+                    margin-bottom: 12px;"
+             class="no-top-bottom-padding ion-justify-content-center max-width-550 ion-no-padding">
+      <ion-button fill="outline">
+        <ion-label color="primary">Animated Text</ion-label>
+      </ion-button>
+    </ion-row>
+    <!--------------------------------------------------------------------------------------------->
+    <!-- Animated Text  ----------------------------------------------------------------------------->
+    <ion-row class="no-top-bottom-padding ion-justify-content-center ion-no-padding">
+      <ion-col class="ion-no-padding">
+        <cstm-animated-text title="Title Label"
+                            titleColor="#ffffff"
+                            subTitle="Subtitle Label"
+                            subTitleColor="#fff"
+                            backgroundColor="black"
+                            height="300px"
+                            width="250px">
+        </cstm-animated-text>
+      </ion-col>
+    </ion-row>
+
+
+    <!--------------------------------------------------------------------------------------------->
+    <!-- Component Label -------------------------------------------------------------------------->
+    <ion-row style="margin-top: 55px;
+                    margin-bottom: 12px;"
+             class="no-top-bottom-padding ion-justify-content-center max-width-550 ion-no-padding">
+      <ion-button fill="outline">
+        <ion-label color="primary">Glowing Text</ion-label>
+      </ion-button>
+    </ion-row>
+    <!--------------------------------------------------------------------------------------------->
+    <!-- Glowing Text  ----------------------------------------------------------------------------->
+    <ion-row class="no-top-bottom-padding ion-justify-content-center ion-no-padding">
+      <ion-col class="ion-no-padding">
+        <cstm-glowing-text glowRadius="50px"
+                           height="300px"
+                           backgroundColor="black"
+                           fontSize="10vw"
+                           color1="cyan"
+                           color2="yellow"
+                           color3="tomato"
+                           text="Vlad">
+        </cstm-glowing-text>
+      </ion-col>
+    </ion-row>
+
+
+    <!--------------------------------------------------------------------------------------------->
+    <!-- Component Label -------------------------------------------------------------------------->
+    <ion-row style="margin-top: 55px;
+                    margin-bottom: 12px;"
+             class="no-top-bottom-padding ion-justify-content-center max-width-550 ion-no-padding">
+      <ion-button fill="outline">
+        <ion-label color="primary">Circle Hover Button</ion-label>
+      </ion-button>
+    </ion-row>
+    <!--------------------------------------------------------------------------------------------->
+    <!-- Circle Hover Button  ----------------------------------------------------------------------------->
+    <ion-row class="no-top-bottom-padding ion-justify-content-center ion-no-padding">
+      <ion-col class="ion-no-padding">
+          <cstm-circle-hover-btn height="250px" width="100%"></cstm-circle-hover-btn>
+      </ion-col>
+    </ion-row>
+
+
+
+    
+
+
+
+
+    <!--------------------------------------------------------------------------------------------->
+    <!-- Component Label -------------------------------------------------------------------------->
+    <ion-row style="margin-top: 55px;
+                    margin-bottom: 12px;"
+             class="no-top-bottom-padding ion-justify-content-center max-width-550 ion-no-padding">
+      <ion-button fill="outline">
+        <ion-label color="primary">Neon Button</ion-label>
+      </ion-button>
+    </ion-row>
+    <!--------------------------------------------------------------------------------------------->
+    <!-- Neon Button  ----------------------------------------------------------------------------->
+    <ion-row class="no-top-bottom-padding ion-justify-content-center ion-no-padding">
+      <ion-col class="ion-no-padding">
+        <cstm-neon-btn label="Click Me!"
+                       height="300px"
+                       backgroundColor="#222"
+                       fontFamily="Permanent Marker"
+                       color="var(--ion-color-secondary)">
+        </cstm-neon-btn>
+      </ion-col>
+    </ion-row>
+
+
+
+    <!--------------------------------------------------------------------------------------------->
+    <!-- Component Label -------------------------------------------------------------------------->
+    <ion-row style="margin-top: 55px;
+                    margin-bottom: 12px;"
+             class="no-top-bottom-padding ion-justify-content-center max-width-550 ion-no-padding">
+      <ion-button fill="outline">
+        <ion-label color="primary">Wave Header</ion-label>
+      </ion-button>
+    </ion-row>
+    <!--------------------------------------------------------------------------------------------->
+    <!-- Wave Component -------------------------------------------------------------------------->
+    <ion-row class="no-top-bottom-padding ion-justify-content-center ion-no-padding">
+      <ion-col class="ion-no-padding">
+        <cstm-waves-background [animated]="false"
+                               color1="#ffffffB3"
+                               color2="#ffffff80"
+                               color3="#ffffff4C"
+                               color4="#ffffff"
+                               backgroundColor1="rgba(81, 45, 168, 1)"
+                               backgroundColor2="rgba(48, 51, 107, 1)">
+          <h1 style="font-size: 44px;  margin-top: 18vh;">Title</h1>
+        </cstm-waves-background>
+      </ion-col>
+    </ion-row>
+
+
+
+    <!--------------------------------------------------------------------------------------------->
+    <!-- Component Label -------------------------------------------------------------------------->
+    <ion-row style="margin-top: 55px;
+                    margin-bottom: 12px;"
+             class="no-top-bottom-padding ion-justify-content-center max-width-550 ion-no-padding">
+      <ion-button fill="outline">
+        <ion-label color="primary">Snow background</ion-label>
+      </ion-button>
+    </ion-row>
+    <!--------------------------------------------------------------------------------------------->
+    <!-- Snow Background -------------------------------------------------------------------------->
+    <ion-row style="height: 350px; background: #383279; overflow: hidden;"
+             class="no-top-bottom-padding ion-justify-content-center ion-no-padding">
+      <ion-col class="ion-no-padding">
+        <cstm-snow-background backgroundColor="#222"></cstm-snow-background>
+      </ion-col>
+    </ion-row>
+
+
+
+    <!--------------------------------------------------------------------------------------------->
+    <!-- Component Label -------------------------------------------------------------------------->
+    <ion-row style="margin-top: 55px;
+                    margin-bottom: 12px;"
+             class="no-top-bottom-padding ion-justify-content-center max-width-550 ion-no-padding">
+      <ion-button fill="outline">
+        <ion-label color="primary">Circle Blur background</ion-label>
+      </ion-button>
+    </ion-row>
+    <!--------------------------------------------------------------------------------------------->
+    <!-- Snow Background -------------------------------------------------------------------------->
+    <ion-row style="height: 364px; background: black;"
+             class="no-top-bottom-padding ion-justify-content-center ion-no-padding">
+      <ion-col class="ion-no-padding">
+        <cstm-circle-blur-background size="222px"
+                                     mobileSize="250px"
+                                     padding="10vh 50vh 10vh 50vh"
+                                     mobilePadding="0px"
+                                     mobileMargin="0px"
+                                     className="container-top">
+        </cstm-circle-blur-background>
+      </ion-col>
+    </ion-row>
+
+
+
+
+
+
+    <ion-row class="no-top-bottom-padding ion-justify-content-center max-width-550 ion-no-padding">
+      <ion-col size-sm="6"
+               size-md="6"
+               size-lg="12"
+               size-xl="12"
+               class="ion-no-padding">
+        <ion-row class="no-top-bottom-padding ion-justify-content-center">
+
+
+
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </main>x
+</ion-content>

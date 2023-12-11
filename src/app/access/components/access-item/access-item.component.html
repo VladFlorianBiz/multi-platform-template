@@ -1,0 +1,42 @@
+  <ion-card class="hover-card"
+            button
+            tappable
+           >
+      <img style="width: 100%; height: 250px;"
+           alt="Silhouette of mountains"
+           [src]="src" />
+
+      <ion-card-header style="padding-top: 8px; padding-bottom: 8px;">
+          <div>
+              <ion-card-title style="text-align: start;">
+                  {{name}}
+              </ion-card-title>
+          </div>
+      </ion-card-header>
+
+      <ion-card-content style="padding-bottom: 11px; height: 144px;">
+
+          <ion-row class="ion-justify-content-start">
+              <span><b> {{description}}</b> &nbsp;</span>
+          </ion-row>
+
+          <ion-row style="position: absolute; bottom: 0; left: 0px; right: 0px; padding-bottom: 6px;"
+                   class="ion-justify-content-center">
+              <div>
+                  <ion-button class="secondary-btn ion-activatable ripple-parent"
+                              shape="round"
+                              expand="block"
+                              mode="ios"
+                              fill="outline">
+                      <ion-ripple-effect style="display: flex;
+                                      justify-content: start;
+                                      left: -26px;
+                                      right: -26px;">
+                      </ion-ripple-effect>
+                      More
+                  </ion-button>
+              </div>
+          </ion-row>
+
+      </ion-card-content>
+  </ion-card>

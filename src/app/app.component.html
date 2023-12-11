@@ -1,0 +1,103 @@
+<!--Global NavBar ------------------------------------------------------------------------------------------------------------>
+<!-- <app-navbar [currentAccessProfile]="currentAccessProfile$"
+            [accessProfiles]="accessProfiles$"
+            [accessView]="accessView$"
+            [user]="userObj$"
+            [isMobileView]="isMobileView$ "
+            [selectedPath]="selectedPath"
+            [hidden]="(selectedPath.includes('client/session') && selectedPath.includes('user'))  || selectedPath.includes('auth') || selectedPath.includes('tutorial/view') || selectedPath.includes('email-results') || selectedPath.includes('access/select-access') || selectedPath === '/' ">
+</app-navbar> -->
+
+      <!---------------------------------------------------->
+      <!-- Nav Bar ----------------------------------------->
+      <!-- <app-top-nav-bar elementId="navbarElement"
+                       [expandNavbar]="expandTopNav">
+      </app-top-nav-bar> -->
+
+
+            <app-top-nav-bar *ngIf=" navBarConfig.type === navBarTypeOptions.landing"
+                             elementId="navbarElement"
+                             [expandNavbar]="navBarConfig.expand"
+                             [cartItemCount]="cartItemCount" 
+                             [isAuthenticated]="isAuthenticated$">
+            </app-top-nav-bar>
+
+
+                <app-side-nav-bar *ngIf="navBarConfig.type === navBarTypeOptions.authenticated"
+                                  elementId="navbarElement">
+                </app-side-nav-bar>
+
+
+<!-- Main App Container *Side Menu + Page Router ---------------------------------------------------------------------------------------------------->
+
+
+  <!-- Side Menu Component ------------------------------------------------->
+  <ion-menu 
+            #sideMenu menuId="sideMenu"
+            side="end"
+            type="push"
+            class="sideMenuStyle"
+            contentId="main">
+
+
+                
+
+
+
+    <app-side-menu
+                  
+                  [isAuthenticated]="isAuthenticated$"
+                   [isMobileView]="isMobileView$"
+                   [selectedPath]="selectedPath"
+                   class="sideMenuStyle"></app-side-menu>
+  </ion-menu>
+  
+
+
+  <!-- TO DO HANDLE LOADER MODAL --------------------------------------------- -->
+  <ion-modal class="loading-modal"
+             #confirmModal
+             [canDismiss]="!loadingModalConfig?.show"
+             [isOpen]="loadingModalConfig.show"
+              [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
+    <ng-template>
+      <ion-content class="transparentItem" [scrollX]="false"
+                   [scrollY]="false"
+                   style="  height: 100vh;
+  overflow: hidden;">
+
+        <ion-grid style="height: 100%;">
+          <ion-row style="height: 100%;"
+                   class="ion-justify-content-center">
+            <ion-col size="12"
+                     class="ion-align-self-center">
+
+              <ion-item class="ion-justify-content-center ion-align-items-center" lines="none">
+                   <ion-spinner slot="start" color="secondary"
+                                name="lines"></ion-spinner>
+
+                                <ion-label class="ion-text-xl-wrap" style="--color: var(--ion-color-primary); font-weight: 600; ">
+                                     {{loadingModalConfig?.message}}
+                                     <ng-template *ngIf="loadingModalConfig?.subMessage">
+                                        <br>
+                                        <p style="color: var(--ion-color-primary); 
+                     font-size: 14px;">
+                                          {{loadingModalConfig?.subMessage}}
+                                        </p>
+                                     </ng-template>
+                                   
+                                </ion-label>
+
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!-- Page Router --------------------------->
+  <ion-router-outlet id="main"></ion-router-outlet>
+

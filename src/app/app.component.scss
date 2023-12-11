@@ -1,0 +1,40 @@
+.splitPaneStyle {
+  --side-width: var(--sideMenuWidth); //Width of the side pane. Does not apply when split pane is collapsed.
+  //--border:                               //Border between panes
+  // --side-max-width: 300px; //Maximum width of the side pane. Does not apply when split pane is collapsed.
+  //--side-min-width:                       //Minimum width of the side pane. Does not apply when split pane is collapsed.
+
+
+}
+ 
+
+  ion-menu::part(backdrop) {
+    // background-color: rgba(255, 0, 255, 0.5);
+  }
+
+  ion-menu::part(container) {
+    // border-radius: 0 20px 20px 0;
+    background-color: var(--bg-primary);
+
+    // box-shadow: 4px 0px 16px rgba(255, 0, 255, 0.18);
+  }
+  
+.sideMenuStyle {
+  --width: var(--sideMenuWidth); //Width of the menu
+  width: 100%;
+  --height: 100%;
+  height: 100%;
+  //--height:	                                //Height of the menu
+  //--max-height:	                            //Maximum height of the menu
+  // --max-width: 300px;                            //Maximum width of the menu
+  //--min-height:	                            //Minimum height of the menu
+  //--min-width:	                            //Minimum width of the menu
+}
+
+// .uploadUserVideo .modal-wrapper {
+//   background: #222;
+//   --width: 50%;
+//   --height: 50%;
+//   width: 1000px !important;
+//   --border-radius: 40px !important;
+// }

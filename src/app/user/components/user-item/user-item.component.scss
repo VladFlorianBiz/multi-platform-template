@@ -1,0 +1,12 @@
+ion-card {
+  width: 500px;
+  max-width: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+
+  ion-card {
+    width:  90vw;
+margin: auto;
+  }
+}

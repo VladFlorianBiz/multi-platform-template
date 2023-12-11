@@ -1,0 +1,12 @@
+<div class="container-glowing-text "
+     [style.--glow-radius]="glowRadius"
+     [style.--background-color]="backgroundColor"
+     [style.--font-size]="fontSize"
+     [style.--height]="height"
+     [style.--color1]="color1"
+     [style.--color2]="color2"
+     [style.--color3]="color3">
+  <span *ngFor="let letter of text?.split('')">
+    {{letter}}
+  </span>
+</div>

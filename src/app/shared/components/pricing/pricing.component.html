@@ -1,0 +1,55 @@
+<main class="main flow">
+  <div class="main__heading">
+    <div style="    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-top: 28px;">
+      <ion-label style="    font-weight: 500;">
+        Monthly
+      </ion-label>
+      <ion-toggle [(ngModel)]="isYearlyPriceStructure"
+                  (ionChange)="toggleOption($event.detail.checked)"></ion-toggle>
+      <ion-label style="    font-weight: 500;">
+        Annually
+      </ion-label>
+
+    </div>
+  </div>
+
+  <div class="main__cards cards">
+    <div class="cards__inner">
+      <div *ngFor="let plan of plans"
+           [class.card-selected]="plan.selected"
+           class="cards__card card">
+        <h2 class="card__heading">{{ plan.friendlyName }}</h2>
+        <p class="card__price">
+
+          <span *ngIf="plan?.price == 0">
+            Free
+          </span>
+
+          <span *ngIf="plan?.price != 0">
+            {{ isYearlyPriceStructure ? '$' + plan.annualPrice :  '$' + plan.price }}
+
+            <span style="    font-size: 12px;
+    color: var(--ion-color-secondary);
+"
+                  *ngIf="isYearlyPriceStructure">Save 10%</span>
+          </span>
+        </p>
+        <ul role="list"
+            class="card__bullets flow">
+          <li *ngFor="let feature of plan.features">{{ feature }}</li>
+        </ul>
+        <a (click)="onPlanSelected(plan)"
+           class="card__cta cta"
+           [class.card-selected]="plan.selected">
+          <ion-label style="    z-index: 999;
+    position: relative;">{{ plan.cta }}</ion-label>
+        </a>
+      </div>
+    </div>
+    <div class="overlay cards__inner"></div>
+  </div>
+</main>

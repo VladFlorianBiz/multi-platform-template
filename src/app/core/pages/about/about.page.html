@@ -1,0 +1,45 @@
+<ion-content scrollbarStyle>
+
+  <div addOrRemoveClassOnIntersection
+       className="expand-navbar"
+       elementId="navbarElement"
+       (addOrRemoveClassEvent)="addOrRemoveClassEvent($event)"
+       style="top: -1px; padding-top: 32px; margin-bottom: -32px;"></div>
+
+  <main #scrollArea>
+        <cstm-waves-background [animated]="false"
+                               color1="#ffffffB3"
+                               color2="#ffffff80"
+                               color3="#ffffff4C"
+                               color4="#ffffff"
+                               backgroundColor1="rgba(81, 45, 168, 1)"
+                               backgroundColor2="rgba(48, 51, 107, 1)">
+          <h1 style="font-size: 44px;  margin-top: 18vh;">About</h1>
+        </cstm-waves-background>
+
+
+
+        <ion-grid style="margin-bottom: 36vh; margin-top: 4vh;">
+          <ion-row class="ion-justify-content-center max-width-1080">
+            <ion-col size-xs="12"
+                     size-sm="12"
+                     size-md="12"
+                     size-lg="8">
+              <ion-row style="display: flex; justify-content: center;">
+
+
+
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+        
+
+    <!-- REMOVE FOR TEST NAV BAR -->
+    <div style="height: 459px"> </div>
+  </main>
+
+
+</ion-content>

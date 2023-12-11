@@ -1,0 +1,29 @@
+ion-content {
+  --color: #fff;
+  --background: none;
+  background: url(/../../assets/images/background8.jpg) no-repeat 0 0;
+  background-size: cover;
+  background-position: center center;
+
+
+  //     --background-color1: #424949;
+  //     --background-color2: #27ae60;
+  // background: linear-gradient(60deg, var(--background-color1) 0%, var(--background-color2) 100%);
+// COOL BACKGROUND
+// background: url(/../../assets/images/back3.jpg) no-repeat 0 0;
+// background: url(/../../assets/images/back8.jpg) no-repeat 0 0;
+// background: url(/../../assets/images/back10.jpg) no-repeat 0 0;
+// background: url(/../../assets/images/back11.jpg) no-repeat 0 0;
+// background: url(/../../assets/images/back9.jpg) no-repeat 0 0;
+// background: url(/../../assets/images/back12.jpg) no-repeat 0 0;
+// background: url(/../../assets/images/back16.jpg) no-repeat 0 0;
+// background: url(/../../assets/images/back17.jpg) no-repeat 0 0;
+// background: url(/../../assets/images/background8.jpg) no-repeat 0 0;
+}
+
+.logoImg {
+  max-height: 250px;
+  max-width: 250px;
+  margin: auto;
+  display: block;
+}

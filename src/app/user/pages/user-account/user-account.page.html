@@ -1,0 +1,269 @@
+<!----------------------------------------------------------------------------------------------------------->
+<!-- Page Content(similar to <body> check out index.html to see structure) ---------------------------------->
+<ion-content [scrollEvents]="true"
+             (ionScroll)="handleScroll($any($event))"
+             scrollbarStyle
+             fullscreen="true"
+             scrollX="false">
+
+  <!--------------------------------------------------------------------->
+  <!-- ion-header ------------------------------------------------------->
+  <ion-header slot="fixed"
+              style="align-self: start;"
+              class="ion-no-border"
+              [class.hideNavBarFlag]="hideNavBarFlag">
+    <div class="header-container"
+         style="background: rgb(255 255 255 / 50%); margin-left: 5rem;">
+
+      <cstm-waves-background *ngIf="!hideNavBarFlag && isMobileView"
+                             [animated]="false"
+                             color1="#ffffffB3"
+                             color2="#ffffff80"
+                             color3="#ffffff4C"
+                             color4="#ffffff"
+                             backgroundColor1="#05251d"
+                             backgroundColor2="#05251d"
+                             height="16vh">
+        <cstm-glowing-text glowRadius="50px"
+                           backgroundColor="transparent"
+                           fontSize="10vw"
+                           height="none"
+                           color1="#FFE7C4"
+                           color2="#FFD5A5"
+                           color3="#FFC085"
+                           text="My&nbsp;Account">
+        </cstm-glowing-text>
+      </cstm-waves-background>
+
+
+      <!-- ion-toolbar -------------------------------------------------->
+      <ion-toolbar *ngIf="!isMobileView && !hideNavBarFlag"
+                   style="max-width: 1080px; margin: 0 auto; ">
+        <!-- Page Title ------------------------------------------------->
+        <ion-title class="page-title text-align-center"
+                   color="primary">
+          My Account
+        </ion-title>
+
+
+      </ion-toolbar>
+      <!-- 
+            <ion-toolbar *ngIf="!isMobileView && !hideNavBarFlag">
+    <ion-segment value="all">
+      <ion-segment-button value="all">
+        <ion-label>All</ion-label>
+            <ion-icon name="call"></ion-icon>
+
+      </ion-segment-button>
+            <ion-segment-button value="Usage">
+              <ion-label>Usage</ion-label>
+                  <ion-icon name="call"></ion-icon>
+
+            </ion-segment-button>
+      <ion-segment-button value="Billing">
+        <ion-label>Billing</ion-label>
+            <ion-icon name="call"></ion-icon>
+
+      </ion-segment-button>
+    </ion-segment>
+
+            </ion-toolbar> -->
+
+
+      <cstm-waves-background *ngIf="hideNavBarFlag  && isMobileView"
+                             style="  transition: all .2s ease 0s;"
+                             [animated]="false"
+                             color1="#ffffffB3"
+                             color2="#ffffff80"
+                             color3="#ffffff4C"
+                             color4="#ffffff"
+                             backgroundColor1="#05251d"
+                             backgroundColor2="#05251d"
+                             height="12vh">
+        <cstm-glowing-text glowRadius="44px"
+                           backgroundColor="transparent"
+                           fontSize="10vw"
+                           height="none"
+                           color1="#FFE7C4"
+                           color2="#FFD5A5"
+                           color3="#FFC085"
+                           text="My&nbsp;Account">
+        </cstm-glowing-text>
+      </cstm-waves-background>
+    </div>
+  </ion-header>
+
+
+
+  <!--------------------------------------------------------------------------------------------------------->
+  <!-- Container for page content adds margin based on side menu -------------------------------------------->
+  <main>
+
+
+
+    <!-- Input Row --------------------------------------------------------------------------------->
+    <ion-row class="no-top-bottom-padding max-width-550 ion-justify-content-center">
+      <ion-col size="12">
+
+         <ion-card>
+           <ion-card-header>
+             <ion-card-title>User Info</ion-card-title>
+           </ion-card-header>
+           <ion-card-content>
+             <ion-item>
+               <ion-icon name="person-outline"
+                         slot="start"></ion-icon>
+               <ion-label *ngIf="(currentUser?.email?.length > 0)">Email: <strong>{{currentUser?.email}}</strong></ion-label>
+               <ion-label *ngIf="!(currentUser?.email?.length > 0)">Email: <strong>No Email</strong></ion-label>
+             </ion-item>
+             <ion-item (click)="onChangePassword()" button>Change Password</ion-item>
+           </ion-card-content>
+         </ion-card>
+
+
+                <!-- <ion-row>
+                  <ion-col size="12">
+                    <ion-card>
+                      <ion-card-header>
+                        <ion-card-title>Plan</ion-card-title>
+                      </ion-card-header>
+                      <ion-card-content>
+                        <ion-item>
+                          <ion-icon name="document-text-outline"
+                                    slot="start"></ion-icon>
+                          <ion-label>Current Plan: <strong style="text-transform: capitalize;">{{currentUser?.subscription?.type ?? 'Welcome'}}</strong></ion-label>
+                        </ion-item>
+                        <ion-item (click)="onChangePlan()" button>Change Plan</ion-item>
+                        <ion-item button>Cancel Subscription</ion-item>
+                      </ion-card-content>
+                    </ion-card>
+                  </ion-col>
+                </ion-row> -->
+
+                <!-- <ion-row>
+                  <ion-col size="12">
+                    <ion-card>
+                      <ion-card-header>
+                        <ion-card-title>Billing</ion-card-title>
+                      </ion-card-header>
+                      <ion-card-content>
+                        <ion-item>
+                          <ion-icon name="document-text-outline"
+                                    slot="start"></ion-icon>
+                          <ion-label *ngIf="(currentUser?.paymentMethod?.last4?.length > 0)">Card: <strong>•••• •••• •••• 1234 (VISA)</strong></ion-label>
+                          <ion-label *ngIf="!(currentUser?.paymentMethod?.last4?.length > 0)">Card: <strong>No Card Provided</strong></ion-label>
+
+                        </ion-item>
+                        <ion-item button>Change Card</ion-item>
+                        <ion-item button>Add New Payment</ion-item>
+                      </ion-card-content>
+                    </ion-card>
+                  </ion-col>
+                </ion-row> -->
+
+             
+
+
+
+
+
+
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="no-top-bottom-padding ion-justify-content-center">
+      <ion-col size-sm="12"
+               size-md="12"
+               size-lg="12"
+               size-xl="12">
+        <ion-row class="no-top-bottom-padding max-width-550 ion-justify-content-center">
+          <ion-col size="12">
+            <div>
+    
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+
+  </main>
+</ion-content>
+
+
+<ion-modal class="confirm-modal"
+           #confirmModal
+           (didDismiss)=" showMustLoginToContinueModal = false"
+           [isOpen]="showMustLoginToContinueModal"
+           [enterAnimation]="enterAnimation"
+           [leaveAnimation]="leaveAnimation">
+  <ng-template>
+    <ion-content [scrollX]="false"
+                 [scrollY]="false"
+                 style="  height: 100vh;
+  overflow: hidden;">
+
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <h1 class="ion-text-center"
+                style="color: var(--ion-color-primary); 
+                      margin-top: 30px;">
+              Sign up or login
+            </h1>
+
+            <p class="ion-text-center"
+               style="color: var(--ion-color-primary); 
+                     font-size: 14px;
+                     margin-bottom: 33px;
+                     margin-top: 19px;">
+              Create a free account or login to start your chat.
+            </p>
+
+
+            <ion-button (click)="confirmModal?.dismiss(); goToLoginPage(); "
+                        style="--border-radius: 33px; 
+                               margin: 0; 
+                               height: 50px;
+                               font-weight: 600;
+                              padding-right: 17px;
+                              padding-left: 17px;
+                              font-weight: 600;"
+                        fill="solid"
+                        color="primary"
+                        shape="round"
+                        class="confirm-videos-btn "
+                        size="large"
+                        expand="full">
+              Continue
+            </ion-button>
+
+            <ion-button (click)="setShowLoginToContinueModal(false)"
+                        style="--border-radius: 33px; 
+                        margin: 0;
+                        height: 50px;
+                        font-weight: 600;
+                        padding-right: 17px;
+                        padding-left: 17px;
+                        margin-top: 17px;
+                        font-weight: 600;"
+                        fill="solid"
+                        color="light"
+                        shape="round"
+                        class="confirm-videos-btn "
+                        size="large"
+                        expand="full">
+              Cancel
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+
+
+
+
+    </ion-content>
+  </ng-template>
+</ion-modal>
